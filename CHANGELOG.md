@@ -1,7 +1,7 @@
 # Change Log
 
 ## Mar 10, 2022
-- SLEMM replaces SSGP.
+- SLEMM replaces [SSGP](https://github.com/jiang18/ssgp).
 
 ## Jan 22, 2022
 - Added --error_weight_name for --lmm/--reml/--wls to weight individual error variances.
