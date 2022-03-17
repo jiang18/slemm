@@ -1,5 +1,8 @@
 # Change Log
 
+## Mar 16, 2022
+- Replaced the flag of --reweight by --iter_weighting 1|2. 
+
 ## Mar 10, 2022
 - SLEMM replaces [SSGP](https://github.com/jiang18/ssgp).
 
