@@ -1,5 +1,8 @@
 # Change Log
 
+## Apr 9, 2022
+- Improved the Lanczos recursion.
+
 ## Mar 16, 2022
 - Removed the flag of --reweight.
 - Added an option (--iter_weighting) for specifying the number of iterations in iterative SNP weighting. 
