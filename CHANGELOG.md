@@ -1,6 +1,6 @@
 # Change Log
 
-## Apr 9, 2022
+## Apr 09, 2022
 - Improved the Lanczos recursion.
 
 ## Mar 16, 2022
