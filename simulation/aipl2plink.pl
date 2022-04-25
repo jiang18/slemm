@@ -12,7 +12,6 @@ while(<IN>)
 {
         chomp;
         my @c = split /\s+/;
-        my @g = split //,$c[-1];
         print OUT "0 $c[1] 0 0 2 0";
         
         $c[-1] =~ s/2/ 22/g;
