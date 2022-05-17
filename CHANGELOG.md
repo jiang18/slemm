@@ -1,5 +1,9 @@
 # Change Log
 
+## May 17, 2022
+- Added the empirical BLUE of fixed effects.
+- Added two options (--sig_chisq and --indep_r2) to specify how to identify significant SNPs and fit them as fixed effects in the 2nd REML of --iter_weighting.
+
 ## Apr 09, 2022
 - Improved the Lanczos recursion.
 
