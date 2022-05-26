@@ -301,7 +301,7 @@ if __name__ == "__main__":
 	
 	if block_size > ksnp_ct:
 		block_size = int(ksnp_ct/2)*2
-		print("Warning: Block size in SLEMM was too big, reduced to", ksnp_ct)
+		print("Warning: Block size in SLEMM was too big, reduced to", block_size)
 	
 	ksnp_idx = np.array(ksnp_list, np.uint32)
 	block_step = int(block_size/2)
