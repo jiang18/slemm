@@ -2,6 +2,7 @@
 # January 13, 2022: corrected genotype centering
 # January 26, 2022: reduced block size if it is > # of model SNPs on a chr
 # March 10, 2022: rename SSGP (ssgp) to SLEMM (slemm)
+# May 26, 2022: forced block size to an even number if > # of model SNPs
 
 #!/usr/bin/python3
 import pgenlib
@@ -299,7 +300,7 @@ if __name__ == "__main__":
 	print("Count of model variants to be used is", ksnp_ct)
 	
 	if block_size > ksnp_ct:
-		block_size = ksnp_ct
+		block_size = int(ksnp_ct/2)*2
 		print("Warning: Block size in SLEMM was too big, reduced to", ksnp_ct)
 	
 	ksnp_idx = np.array(ksnp_list, np.uint32)
