@@ -1,7 +1,7 @@
 # Change Log
 
 ## Jun 10, 2022
-- Changed default values for a few options 
+- Improved the computation for small samples. 
 
 ## May 17, 2022
 - Added the empirical BLUE of fixed effects.
