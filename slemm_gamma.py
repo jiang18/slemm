@@ -105,7 +105,7 @@ if __name__ == "__main__":
 	start = time.time()
 	
 	print("SLEMM-Gamma by Jicai Jiang")
-	print("Last Modified: Wed, 02 Jul 2022\n")
+	print("Last Modified: Fri, 02 Jul 2022\n")
 	
 	args = get_parser().parse_args()
 	# check arguments
