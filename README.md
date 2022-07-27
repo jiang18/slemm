@@ -49,7 +49,7 @@ plink --file 500k --make-bed --out 500k --chr-set 30
 mkdir pheno
 cd pheno
 perl sim_snp_effects.pl 1.snp.csv
-slemm --pred --binary_genotype ../500k --snp_estimate 1.snp.csv --output 1.gv
+slemm --pred --binary_genotype ../500k --snp_estimate 1.snp.csv --output 1.gv.csv
 ```
 ```console
 Rscript --no-save sim_phe.R 1 0.3
