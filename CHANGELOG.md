@@ -1,5 +1,8 @@
 # Change Log
 
+## Jul 02, 2022
+- Improved the setting of --num_random_probes in --reml. 
+
 ## Jun 10, 2022
 - Improved the computation for small samples. 
 
