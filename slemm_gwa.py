@@ -1,8 +1,9 @@
-# January 11, 2022: enabled the use of reliability
-# January 13, 2022: corrected genotype centering
-# January 26, 2022: reduced block size if it is > # of model SNPs on a chr
-# March 10, 2022: rename SSGP (ssgp) to SLEMM (slemm)
+# Jan 11, 2022: enabled the use of reliability
+# Jan 13, 2022: corrected genotype centering
+# Jan 26, 2022: reduced block size if it is > # of model SNPs on a chr
+# Mar 10, 2022: renamed SSGP (ssgp) to SLEMM (slemm)
 # May 26, 2022: forced block size to an even number if > # of model SNPs
+# Jul 02, 2022: printed the last modified date
 
 #!/usr/bin/python3
 import pgenlib
@@ -79,6 +80,9 @@ def get_parser():
 
 if __name__ == "__main__":
 	start = time.time()
+	
+	print("SLEMM-GWA by Jicai Jiang")
+	print("Last Modified: Wed, 02 Jul 2022\n")
 	
 	args = get_parser().parse_args()
 	# check arguments
