@@ -1,6 +1,7 @@
-# January 11, 2022: enabled the use of reliability
-# January 13, 2022: corrected genotype centering
-# March 10, 2022: rename SSGP (ssgp) to SLEMM (slemm)
+# Jan 11, 2022: enabled the use of reliability
+# Jan 13, 2022: corrected genotype centering
+# Mar 10, 2022: renamed SSGP (ssgp) to SLEMM (slemm)
+# Jul 02, 2022: printed the last modified date
 
 #!/usr/bin/python3
 import pgenlib
@@ -102,6 +103,9 @@ def mean_wo_outliers(x):
 
 if __name__ == "__main__":
 	start = time.time()
+	
+	print("SLEMM-Gamma by Jicai Jiang")
+	print("Last Modified: Wed, 02 Jul 2022\n")
 	
 	args = get_parser().parse_args()
 	# check arguments
