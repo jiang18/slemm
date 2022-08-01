@@ -79,7 +79,7 @@ export OMP_NUM_THREADS=10
 for i in `seq 1 22`; do slemm_gwa.py --pfile ../10k/10k --slemm 1 --out 1.chr$i.txt --chr $i; done
 
 cp 1.chr1.txt 1.chr1-22.txt
-for i in `seq 1 22`; do tail -n +2 1.chr$i.txt >> 1.chr1-22.txt; done
+for i in `seq 2 22`; do tail -n +2 1.chr$i.txt >> 1.chr1-22.txt; done
 ```
 ## Dependencies of slemm_gamma.py and slemm_gwa.py
 - Linux packages: python3, python3-devel, gcc, and gcc-c++
