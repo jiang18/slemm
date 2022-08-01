@@ -3,6 +3,7 @@
 # Mar 10, 2022: renamed SSGP (ssgp) to SLEMM (slemm)
 # Jul 02, 2022: printed the last modified date
 # Jul 30, 2022: improved the speed of associations
+# Jul 31, 2022: added a header line in output
 
 #!/usr/bin/python3
 import pgenlib
@@ -105,11 +106,18 @@ def mean_wo_outliers(x):
 if __name__ == "__main__":
     start = time.time()
     
-    print("SLEMM-Gamma by Jicai Jiang")
-    print("Last Modified: Sat, 30 Jul 2022\n")
+    print("*******************************************************************")
+    print("* SLEMM-Gamma by Jicai Jiang")
+    print("* Last Modified: Sun, 31 Jul 2022")
+    print("*******************************************************************")
     
     args = get_parser().parse_args()
     # check arguments
+    if args.begin < 0:
+        args.begin = 0
+    if args.end < 0:
+        args.end = 0
+    
     pgen = None
     psam = None
     pvar = None
@@ -310,8 +318,8 @@ if __name__ == "__main__":
     
     # Compute final statistics for report.
     beta = xy/xx * cfactor
-    se_sq = (snp_var*cfactor)/xx
-    chisq = beta * beta / se_sq
+    serr = np.sqrt((snp_var*cfactor)/xx)
+    chisq = np.square(beta/serr)
     pval = chi2.sf(chisq,1)
     print("Computed association statistics.")
     
@@ -319,17 +327,35 @@ if __name__ == "__main__":
     print("\nWriting stats into", args.out)
     outfp = open(args.out, "w")
     with open(pvar) as fp:
-        var_idx = -1
+        header = None
+        first_cline = None 
         for line in fp:
-            if line[0] == '#':
+            if line.strip() is None:
                 continue
+            if line[0] == '#':
+                header = line
+            else:
+                first_cline = line
+                break
+        if header is not None:
+            header = header.strip() + "\tBETA\tSE\tCHISQ\tP\n"
+        elif len(first_cline.split()) == 6:
+            header = "CHR\tSNP\tCM\tBP\tA1\tA2\tBETA\tSE\tCHISQ\tP\n"
+        else:
+            header = "CHR\tSNP\tBP\tA1\tA2\tBETA\tSE\tCHISQ\tP\n"
+        outfp.write(header)
+        
+        var_idx = 0
+        if args.begin == 0:
+            outfp.write(first_cline.strip() +"\t"+ str(beta[0]) +"\t"+ str(serr[0]) +"\t"+ str(chisq[0]) +"\t"+ str(pval[0]) +"\n")
+        for line in fp:
             if line.strip() is not None:
                 var_idx += 1
                 if var_idx > args.end:
                     break
                 if var_idx >= args.begin:
                     list_idx = var_idx - args.begin
-                    outfp.write(line.strip() +"\t"+ str(beta[list_idx]) +"\t"+ str(se_sq[list_idx]) +"\t"+ str(chisq[list_idx]) +"\t"+ str(pval[list_idx]) +"\n")
+                    outfp.write(line.strip() +"\t"+ str(beta[list_idx]) +"\t"+ str(serr[list_idx]) +"\t"+ str(chisq[list_idx]) +"\t"+ str(pval[list_idx]) +"\n")
     outfp.close()
     
     print(int(time.time()-start), "s taken for the whole analysis.\n")

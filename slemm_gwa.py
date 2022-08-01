@@ -5,6 +5,7 @@
 # May 26, 2022: forced block size to an even number if > # of model SNPs
 # Jul 02, 2022: printed the last modified date
 # Jul 30, 2022: improved the speed of associations
+# Jul 31, 2022: added a header line in output
 
 #!/usr/bin/python3
 import pgenlib
@@ -82,8 +83,10 @@ def get_parser():
 if __name__ == "__main__":
     start = time.time()
     
-    print("SLEMM-GWA by Jicai Jiang")
-    print("Last Modified: Sat, 30 Jul 2022\n")
+    print("*******************************************************************")
+    print("* SLEMM-GWA by Jicai Jiang")
+    print("* Last Modified: Sun, 31 Jul 2022")
+    print("*******************************************************************")
     
     args = get_parser().parse_args()
     # check arguments
@@ -177,6 +180,9 @@ if __name__ == "__main__":
                 ksnp_set.add(elem[0])
     ksnp_ct = len(ksnp_set)
     print("\nCount of model variants on Chr", args.chr, "is", ksnp_ct)
+    if ksnp_ct == 0:
+        print("Error: Is --chr", args.chr, "correctly specified?\n")
+        sys.exit()
     
     '''
     Get phenotypes in SLEMM reml.py file and store 
@@ -418,8 +424,8 @@ if __name__ == "__main__":
     # compute statistics for report
     st_xx /= tau
     beta = st_xy/st_xx * cfactor
-    se_sq = (snp_var*cfactor)/st_xx
-    chisq = beta * beta / se_sq
+    serr = np.sqrt((snp_var*cfactor)/st_xx)
+    chisq = np.square(beta/serr)
     pval = chi2.sf(chisq,1)
     print("Computed association statistics.")
     
@@ -430,24 +436,32 @@ if __name__ == "__main__":
         header = None
         first_cline = None 
         for line in fp:
+            if line.strip() is None:
+                continue
             if line[0] == '#':
                 header = line
             else:
                 first_cline = line
                 break
-        # outfp.write("......\tBeta\tVarBeta\tChiSq\tPval\n")
-        vid = 0
-        if vid >= chr_start_idx:
-            list_idx = vid - chr_start_idx
-            outfp.write(first_cline.strip() +"\t"+ str(beta[list_idx]) +"\t"+ str(se_sq[list_idx]) +"\t"+ str(chisq[list_idx]) +"\t"+ str(pval[list_idx]) +"\n")
+        if header is not None:
+            header = header.strip() + "\tBETA\tSE\tCHISQ\tP\n"
+        elif len(first_cline.split()) == 6:
+            header = "CHR\tSNP\tCM\tBP\tA1\tA2\tBETA\tSE\tCHISQ\tP\n"
+        else:
+            header = "CHR\tSNP\tBP\tA1\tA2\tBETA\tSE\tCHISQ\tP\n"
+        outfp.write(header)
+        
+        var_idx = 0
+        if chr_start_idx == 0:
+            outfp.write(first_cline.strip() +"\t"+ str(beta[0]) +"\t"+ str(serr[0]) +"\t"+ str(chisq[0]) +"\t"+ str(pval[0]) +"\n")
         for line in fp:
             if line.strip() is not None:
-                vid += 1
-                if vid > chr_end_idx:
+                var_idx += 1
+                if var_idx > chr_end_idx:
                     break
-                if vid >= chr_start_idx:
-                    list_idx = vid - chr_start_idx
-                    outfp.write(line.strip() +"\t"+ str(beta[list_idx]) +"\t"+ str(se_sq[list_idx]) +"\t"+ str(chisq[list_idx]) +"\t"+ str(pval[list_idx]) +"\n")
+                if var_idx >= chr_start_idx:
+                    list_idx = var_idx - chr_start_idx
+                    outfp.write(line.strip() +"\t"+ str(beta[list_idx]) +"\t"+ str(serr[list_idx]) +"\t"+ str(chisq[list_idx]) +"\t"+ str(pval[list_idx]) +"\n")
     outfp.close()
     print(int(time.time()-start), "s taken for the whole analysis.\n")
 
