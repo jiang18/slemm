@@ -1,7 +1,8 @@
 # Change Log
 
-## Jul 30, 2022
+## Jul 31, 2022
 - Improved the speed of association tests in slemm_gamma and slemm_gwa. 
+- Added a header line in output of slemm_gamma and slemm_gwa.
 
 ## Jul 02, 2022
 - Improved the setting of --num_random_probes in --reml. 
