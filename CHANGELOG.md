@@ -1,5 +1,8 @@
 # Change Log
 
+## Aug 22, 2022
+- Fixed a minor issue in genotype reading.
+
 ## Jul 31, 2022
 - Improved the speed of association tests in slemm_gamma and slemm_gwa. 
 - Added a header line in output of slemm_gamma and slemm_gwa.
