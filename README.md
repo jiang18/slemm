@@ -4,7 +4,7 @@
 ---
 
 # Executable
-https://github.com/jiang18/slemm/releases/tag/20220731
+https://github.com/jiang18/slemm/releases/tag/20220822
 
 # Simulation
 The procedures below generate genotypes and phenotypes of 500K individuals. Modify the sample size if needed. 
