@@ -1,17 +1,9 @@
-# SLEMM
-## Stochastic-Lanczos-Expedited Mixed Models
-
----
-
-# Executable
-https://github.com/jiang18/slemm/releases/tag/20220822
-
 # Simulation
-The procedures below generate genotypes and phenotypes of 500K individuals. Modify the sample size if needed. 
+The procedures below generate genotypes and phenotypes of 10K unrelated individuals. Modify the sample size if needed. 
 ## Simulate genotypes with [genosim](https://aipl.arsusda.gov/software/genosim/)
 1. pedigree.file and genotype.data0
 ```console
-perl sim_ped.pl 500000
+perl sim_ped.pl 10000
 ```
 2. markersim.options
 ```
@@ -41,21 +33,20 @@ chromes Xchrome  notread   errate   mutate
 ```
 ## Convert genosim output files to plink files
 ```console
-perl aipl2plink.pl 500k
-plink --file 500k --make-bed --out 500k --chr-set 30
+perl aipl2plink.pl 10k
+plink --file 10k --make-bed --out 10k --chr-set 30
 ```
 ## Simulate phenotypes based on genosim output files
 ```console
 mkdir pheno
 cd pheno
 perl sim_snp_effects.pl 1.snp.csv
-slemm --pred --binary_genotype ../500k --snp_estimate 1.snp.csv --output 1.gv.csv
+slemm --pred --binary_genotype ../10k --snp_estimate 1.snp.csv --output 1.gv.csv
 ```
 ```console
 Rscript --no-save sim_phe.R 1 0.3
 ```
 # SLEMM
-Note that the simulation procedures above generate a sample of 500K while the commands below work for a sample of 10K.
 ## REML
 ```console
 mkdir slemm
