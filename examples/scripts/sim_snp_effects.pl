@@ -5,7 +5,7 @@ use warnings;
 
 my @snps;
 my %freq;
-open IN,"../true.frequency";
+open IN,"true.frequency";
 while(<IN>)
 {
         chomp;
