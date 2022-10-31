@@ -1,7 +1,7 @@
 ## SLEMM (Stochastic-Lanczos-Expedited Mixed Models)
 SLEMM is a software tool for large-scale genomic predictions and genome-wide association studies.
 
-## Author and contact
+## Author and Contact
 [Jicai Jiang](https://cals.ncsu.edu/animal-science/people/jicai-jiang)
 
 ## Compilation
