@@ -7,17 +7,17 @@ SLEMM is a software tool for large-scale genomic predictions and genome-wide ass
 ## Compilation
 #### Requirements
 1. x86-64 Linux
-2. [Intel MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-download.html) 2019
-3. Eigen 3.3.9 (there are bugs in the new version of Eigen)
+2. [Intel MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-download.html) 2019 or above
+3. Eigen 3.3.9
 
+#### Linux
+1. Kernel version >= 3.10.0 (not tested on older versions)
+2. Intel C++ >= 19.0 (not tested on older versions)
 
-
-# Executable
+## Executable
 https://github.com/jiang18/slemm/releases/tag/20220822
 
 ---
-
-
 
 ## Dependencies of slemm_gamma.py and slemm_gwa.py
 - Linux packages: python3, python3-devel, gcc, and gcc-c++
