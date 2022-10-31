@@ -1,51 +1,30 @@
 # Simulation
-The procedures below generate genotypes and phenotypes of 10K unrelated individuals. Modify the sample size if needed. 
 ## Simulate genotypes with [genosim](https://aipl.arsusda.gov/software/genosim/)
-1. pedigree.file and genotype.data0
+1. Generate pedigree.file and genotype.data0 for genosim
 ```console
-perl sim_ped.pl 10000
+cd data
+perl ../scripts/sim_ped.pl 10000
 ```
-2. markersim.options
-```
-  50000      0      1.0         0           1
-  loci     qtls    curvparm   correlated   traits
-
- 96     30        .01       .99       0
-seed  chromes  minfreq  maxfreq  QTLfreq
-```
-3. chips.txt
-```
-chip    reduce1   offset1    reduce2    offset2    depth1    error1
-  1        1         0          1          0          35        .00
-```
-4. genosim.options
-```
-  1.0      .965      0
-Morgans  LDparam  hapout
-
-  30      30      .00      .000   .00000003
-chromes Xchrome  notread   errate   mutate
-```
-5. Run genosim
+The procedure above generates genosim input files for 10k unrelated individuals. 
+2. Run genosim
 ```console
-./markersim
-./genosim
+markersim
+genosim
 ```
 ## Convert genosim output files to plink files
 ```console
-perl aipl2plink.pl 10k
+perl ../scripts/aipl2plink.pl 10k
 plink --file 10k --make-bed --out 10k --chr-set 30
 ```
 ## Simulate phenotypes based on genosim output files
 ```console
-mkdir pheno
-cd pheno
-perl sim_snp_effects.pl 1.snp.csv
-slemm --pred --binary_genotype ../10k --snp_estimate 1.snp.csv --output 1.gv.csv
+perl ../scripts/sim_snp_effects.pl 1.snp.csv
+slemm --pred --binary_genotype 10k --snp_estimate 1.snp.csv --output 10k.1.gv.csv
+Rscript --no-save sim_phe.R 10k.1 0.3
 ```
-```console
-Rscript --no-save sim_phe.R 1 0.3
-```
+- The Perl script simulates SNP effects.
+- slemm computes total genetic values.
+- The R script simulates phenotypes with a heritability of 0.3.
 # SLEMM
 ## REML
 ```console

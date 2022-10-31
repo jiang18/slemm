@@ -1,0 +1,5 @@
+  50000      0      1.0         0           1
+  loci     qtls    curvparm   correlated   traits
+
+ 96     30        .01       .99       0
+seed  chromes  minfreq  maxfreq  QTLfreq
