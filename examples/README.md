@@ -43,7 +43,7 @@ slemm --pred --binary_genotype_file ../data/10k --snp_estimate 10k.reml.snp.csv 
 ## LMM and GWA
 ```console
 slemm --lmm --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
-OMP_NUM_THREADS=1 slemm_gamma.py --pfile ../data/10k --slemm 10k --out 10.gamma.txt
+OMP_NUM_THREADS=1 slemm_gamma.py --pfile ../data/10k --slemm 10k --out 10k.gamma.txt
 OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.txt --chr 1
 ```
 - slemm --lmm fits linear mixed model for genome-wide associations.
@@ -54,8 +54,8 @@ OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.t
 export OMP_NUM_THREADS=10
 for i in `seq 1 30`; do slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr$i.txt --chr $i; done
 
-cp 10k.chr1.txt 10k.chrAll.txt
-for i in `seq 2 30`; do tail -n +2 10k.chr$i.txt >> 10k.chrAll.txt; done
+mv 10k.chr1.txt 10k.chrAll.txt
+for i in `seq 2 30`; do tail -n +2 10k.chr$i.txt >> 10k.chrAll.txt; rm 10k.chr$i.txt; done
 ```
 - Association tests for all chromosomes
 # [BOLT](https://alkesgroup.broadinstitute.org/BOLT-LMM/BOLT-LMM_manual.html)
