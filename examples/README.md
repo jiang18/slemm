@@ -9,16 +9,16 @@ genosim
 - Enter the data folder.
 - The Perl script generates pedigree.file and genotype.data0 for 10k unrelated individuals. 
 - Run genosim.
-## Convert genosim output files to plink files
+## Convert genosim output files to PLINK files
 ```console
 perl ../scripts/aipl2plink.pl 10k
 plink --file 10k --make-bed --out 10k --chr-set 30
 ```
-## Simulate phenotypes based on genosim output files
+## Simulate phenotypes based on genotypes
 ```console
 perl ../scripts/sim_snp_effects.pl 1.snp.csv
-slemm --pred --binary_genotype 10k --snp_estimate 1.snp.csv --output 10k.1.gv.csv
-Rscript --no-save sim_phe.R 10k.1 0.3
+slemm --pred --binary_genotype 10k --snp_estimate 1.snp.csv --output 10k.gv.csv
+Rscript --no-save sim_phe.R 10k 0.3
 ```
 - The Perl script simulates SNP effects.
 - slemm computes total genetic values.
@@ -26,28 +26,29 @@ Rscript --no-save sim_phe.R 10k.1 0.3
 # SLEMM
 ## REML
 ```console
+cd ..
 mkdir slemm
 cd slemm
-slemm --phenotype_file ../10k/pheno/1.slemm.csv --binary_genotype_file ../10k/10k --trait QT --reml --snp_info_file snp_info.csv --out 1 --num_threads 10 --num_random_probes 30
+slemm --reml --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
 ```
 ## Weighted least squares
 ```console
-slemm --phenotype_file ../10k/pheno/1.slemm.csv --binary_genotype_file ../10k/10k --trait QT --wls --snp_info_file snp_info.csv --out 1 --num_threads 10
+slemm --wls --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
 ```
 ## LMM and GWA
 ```console
-slemm --phenotype_file ../10k/pheno/1.slemm.csv --binary_genotype_file ../10k/10k --trait QT --lmm --snp_info_file snp_info.csv --out 1 --num_threads 10 --num_qf_markers 30
-slemm_gamma.py --pfile ../10k/10k --slemm 1 --out 1.gamma.txt
-OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../10k/10k --slemm 1 --out 1.chr1.txt --chr 1
+slemm --lmm --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
+slemm_gamma.py --pfile ../data/10k --slemm 10k --out 10.gamma.txt
+OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.txt --chr 1
 ```
 
-Association tests for chromosomes 1-22
+Association tests for all chromosomes
 ```bash
 export OMP_NUM_THREADS=10
-for i in `seq 1 22`; do slemm_gwa.py --pfile ../10k/10k --slemm 1 --out 1.chr$i.txt --chr $i; done
+for i in `seq 1 30`; do slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr$i.txt --chr $i; done
 
-cp 1.chr1.txt 1.chr1-22.txt
-for i in `seq 2 22`; do tail -n +2 1.chr$i.txt >> 1.chr1-22.txt; done
+cp 10k.chr1.txt 10k.chrAll.txt
+for i in `seq 2 30`; do tail -n +2 10k.chr$i.txt >> 10k.chrAll.txt; done
 ```
 ## Dependencies of slemm_gamma.py and slemm_gwa.py
 - Linux packages: python3, python3-devel, gcc, and gcc-c++
