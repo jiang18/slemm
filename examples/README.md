@@ -36,16 +36,15 @@ perl -e 'print "SNP\n"; while(<>) {@c=split /\s+/; print "$c[1]\n"}' < ../data/1
 ```console
 slemm --reml --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
 ```
-## Weighted least squares
-```console
-slemm --wls --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
-```
 ## LMM and GWA
 ```bash
 slemm --lmm --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
-slemm_gamma.py --pfile ../data/10k --slemm 10k --out 10.gamma.txt
+OMP_NUM_THREADS=1 slemm_gamma.py --pfile ../data/10k --slemm 10k --out 10.gamma.txt
 OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.txt --chr 1
 ```
+- slemm --lmm fits linear mixed model for genome-wide associations.
+- slemm_gamma.py computes GRAMMAR-Gamma association statistics for each SNP using the output of --lmm.
+- slemm_gwa.py computes single-SNP association statistics closely approximating EMMAX. 
 
 Association tests for all chromosomes
 ```bash
