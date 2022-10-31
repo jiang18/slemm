@@ -18,7 +18,7 @@ plink --file 10k --make-bed --out 10k --chr-set 30
 ```console
 perl ../scripts/sim_snp_effects.pl 1.snp.csv
 slemm --pred --binary_genotype 10k --snp_estimate 1.snp.csv --output 10k.gv.csv
-Rscript --no-save sim_phe.R 10k 0.3
+Rscript --no-save ../scripts/sim_phe.R 10k 0.3
 ```
 - The Perl script simulates SNP effects.
 - slemm computes total genetic values.
