@@ -31,10 +31,14 @@ mkdir slemm
 cd slemm
 perl -e 'print "SNP\n"; while(<>) {@c=split /\s+/; print "$c[1]\n"}' < ../data/10k.bim > snp_info.csv
 ```
-- The SNP info file is a CSV file with a header line and specifies what SNPs to be included in analysis.
+- The SNP info file is a CSV file with a header line and specifies what SNPs to be included in SLEMM.
 ## REML
 ```console
 slemm --reml --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
+```
+## Prediction of genomic breeding values
+```console
+slemm --pred --binary_genotype_file ../data/10k --snp_estimate 10k.reml.snp.csv --out 10k.gebv.csv
 ```
 ## LMM and GWA
 ```console
