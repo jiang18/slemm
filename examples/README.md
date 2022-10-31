@@ -24,11 +24,16 @@ Rscript --no-save ../scripts/sim_phe.R 10k 0.3
 - slemm computes total genetic values.
 - The R script simulates phenotypes with a heritability of 0.3.
 # SLEMM
-## REML
+## SNP info file
 ```console
 cd ..
 mkdir slemm
 cd slemm
+perl -e 'print "SNP\n"; while(<>) {@c=split /\s+/; print "$c[1]\n"}' < ../data/10k.bim > snp_info.csv
+```
+- The SNP info file is a CSV file with a header line and specifies what SNPs to be included in analysis.
+## REML
+```console
 slemm --reml --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
 ```
 ## Weighted least squares
