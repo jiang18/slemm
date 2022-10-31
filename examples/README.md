@@ -1,6 +1,5 @@
 # Simulation
 ## Simulate genotypes with [genosim](https://aipl.arsusda.gov/software/genosim/)
-1. Generate pedigree.file and genotype.data0 for genosim
 ```console
 cd data
 perl ../scripts/sim_ped.pl 10000
@@ -8,7 +7,7 @@ markersim
 genosim
 ```
 - Enter the data folder.
-- The Perl script generates genosim input files for 10k unrelated individuals. 
+- The Perl script generates pedigree.file and genotype.data0 for 10k unrelated individuals. 
 - Run genosim.
 ## Convert genosim output files to plink files
 ```console
