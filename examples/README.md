@@ -60,19 +60,21 @@ for i in `seq 2 30`; do tail -n +2 10k.chr$i.txt >> 10k.chrAll.txt; rm 10k.chr$i
 - Association tests for all chromosomes
 # [BOLT](https://alkesgroup.broadinstitute.org/BOLT-LMM/BOLT-LMM_manual.html)
 ```console
+cd ..
 mkdir bolt
 cd bolt
 
 ~/software/BOLT-LMM_v2.3.4/bolt \
-  --lmmInfOnly --bed=../10k/10k.bed --bim=../10k/10k.bim --fam=../10k/10k.fam \
-  --phenoFile=../10k/pheno/1.bolt.txt --phenoCol=QT \
+  --lmmInfOnly --bed=../data/10k.bed --bim=../data/10k.bim --fam=../data/10k.fam \
+  --phenoFile=../data/10k.bolt.txt --phenoCol=QT \
   --numThreads=10 --Nautosomes=30 --LDscoresUseChip \
-  --verboseStats --statsFile=10k.1.lmm.txt
+  --verboseStats --statsFile=10k.lmm.txt
 ```
 # [PLINK](https://www.cog-genomics.org/plink/1.9/)
 ```console
+cd ..
 mkdir plink
 cd plink
-plink --r2 --bfile ../10k/10k --chr-set 30 --out 1 --ld-window-r2 0 --ld-window 500 --ld-window-kb 10000
-plink --assoc --bfile ../10k/10k --allow-no-sex --chr-set 30 --pheno ../10k/pheno/1.bolt.txt --pheno-name QT --out 1
+plink --r2 --bfile ../data/10k --chr-set 30 --out 10k --ld-window-r2 0 --ld-window 500 --ld-window-kb 10000
+plink --assoc --bfile ../data/10k --allow-no-sex --chr-set 30 --pheno ../data/10k.bolt.txt --pheno-name QT --out 10k
 ```
