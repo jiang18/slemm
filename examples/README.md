@@ -36,7 +36,7 @@ slemm --reml --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../da
 slemm --wls --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
 ```
 ## LMM and GWA
-```console
+```bash
 slemm --lmm --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
 slemm_gamma.py --pfile ../data/10k --slemm 10k --out 10.gamma.txt
 OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.txt --chr 1
