@@ -4,13 +4,12 @@
 ```console
 cd data
 perl ../scripts/sim_ped.pl 10000
-```
-The procedure above generates genosim input files for 10k unrelated individuals. 
-2. Run genosim
-```console
 markersim
 genosim
 ```
+- Enter the data folder.
+- The Perl script generates genosim input files for 10k unrelated individuals. 
+- Run genosim.
 ## Convert genosim output files to plink files
 ```console
 perl ../scripts/aipl2plink.pl 10k
