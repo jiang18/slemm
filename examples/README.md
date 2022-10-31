@@ -50,7 +50,6 @@ OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.t
 - slemm_gamma.py computes GRAMMAR-Gamma association statistics for each SNP using the output of --lmm.
 - slemm_gwa.py computes single-SNP association statistics closely approximating EMMAX. 
 
-Association tests for all chromosomes
 ```bash
 export OMP_NUM_THREADS=10
 for i in `seq 1 30`; do slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr$i.txt --chr $i; done
@@ -58,15 +57,7 @@ for i in `seq 1 30`; do slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.c
 cp 10k.chr1.txt 10k.chrAll.txt
 for i in `seq 2 30`; do tail -n +2 10k.chr$i.txt >> 10k.chrAll.txt; done
 ```
-## Dependencies of slemm_gamma.py and slemm_gwa.py
-- Linux packages: python3, python3-devel, gcc, and gcc-c++
-- Python packages: cython, numpy, scipy, and [pgenlib](https://github.com/chrchang/plink-ng/tree/master/2.0/Python)
-
-It is usually easy to fullfill the dependencies if your machine has python3 and pip. If it is difficult for you to pip the python3 packages, please try the ones I have compiled on CentOS Linux 7 with GCC 4.8.5 (https://github.com/jiang18/slemm#executable). 
-
-## Error weight
-The argument ```--error_weight_name``` can be added in --reml/--wls/--lmm to weight individual error variance. To enable this, add one additional column in the phenotype CSV file and specify the header name by --error_weight_name. Values are typically 1/r^2-1, where r^2 is the reliability of deregressed EBVs. 
-# [GCTA-fastGWA](https://cnsgenomics.com/software/gcta/#fastGWA)
+- Association tests for all chromosomes
 # [BOLT](https://alkesgroup.broadinstitute.org/BOLT-LMM/BOLT-LMM_manual.html)
 ```console
 mkdir bolt
