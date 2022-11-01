@@ -43,6 +43,8 @@
 | `--min_hwe_pval` | FLOAT | Optional | Filter out SNPs with Hardy-Weinberg equilibrium exact test p-value below the provided threshold [default=0] |
 | `--hwe_midp` | FLAG | Optional | Specify the mid-p adjustment in Hardy-Weinberg equilibrium exact tests |
 ### Stochastic Lanczos REML
+| Option | Argument | Type | Description |
+|-------|-------|-------|--------------|
 | `--rel_tol` | FLOAT | Optional | Relative tolerance for the Lanczos decomposition [default=5e-4] |
 | `--num_random_vectors` | INT | Optional | Number of random probing vectors [default=30] |
 
