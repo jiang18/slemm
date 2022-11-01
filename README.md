@@ -2,7 +2,7 @@
 SLEMM is a software tool for large-scale genomic predictions and genome-wide association studies.
 
 ## Author and Contact
-[Jicai Jiang](https://cals.ncsu.edu/animal-science/people/jicai-jiang)
+[Jicai Jiang](jjiang26@ncsu.edu)
 
 ## Compilation
 #### Requirements
