@@ -12,8 +12,9 @@ SLEMM is a software tool for large-scale genomic predictions and genome-wide ass
 4. Eigen >= 3.3.7
 #### 
 ```console
-# in the src folder
 module load intel
+cd src
+# Change the EIGEN path in Makefile before compiling.
 make
 ```
 
