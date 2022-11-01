@@ -20,6 +20,7 @@
 - The first column must list individual IDs.
 
 ## Options
+### Basic options
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--phenotype_file` | FILE | Required | Phenotype file |
@@ -32,9 +33,17 @@
 | `--covariate_file` | FILE | Optional | Covariate file |
 | `--covariate_names` | STRING | Optional | Comma separated list of covariates to include in the analysis |
 | `--output_file` | FILE | Required | Output filename or prefix |
-| `window_size` | INT | Optional | Number of SNPs in a window for `--iter_weighting` [default=20] and `--lmm` [default=1000] |
+| `--window_size` | INT | Optional | Number of SNPs in a window for `--iter_weighting` [default=20] and `--lmm` [default=1000] |
 | `--num_threads` | INT | Optional | Number of computational threads to use [default=1] |
 | `--subset_size` | INT | Optional | Number of SNPs in a subset [default=1000] |
+### SNP filtering
+| Option | Argument | Type | Description |
+|-------|-------|-------|--------------|
+| `--min_maf` | FLOAT | Optional | Filter out SNPs with a minor allele frequency below or equal to the provided threshold [default=0] |
+| `--min_hwe_pval` | FLOAT | Optional | Filter out SNPs with Hardy-Weinberg equilibrium exact test p-value below the provided threshold [default=0] |
+| `--hwe_midp` | FLAG | Optional | Specify the mid-p adjustment in Hardy-Weinberg equilibrium exact tests |
+
+
 
 
 
