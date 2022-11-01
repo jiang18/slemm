@@ -13,13 +13,29 @@
 - CSV file with a header line
 - Required
 - The first column must list SNP IDs, each of the following columns (if any) lists user-specified prior weights for SNP effect variance.
-- Only SNPs available in both the SNP info file and the genotype file are included in analysis. 
+- Only SNPs available in both the SNP info file and the genotype file are included in the analysis. 
 ### Covariate file format
 - CSV file with a header line
 - Optional
 - The first column must list individual IDs.
 
 ## Options
+| Option | Argument | Type | Description |
+|-------|-------|-------|--------------|
+| `--phenotype_file` | FILE | Required | Phenotype file |
+| `--trait` | STRING` | Required | Must be a column header of the phenotype file and specify which trait to analyze |
+| `--error_weight_name` | STRING | Optional | Must be a column header of the phenotype file and specify which column to use for weighting individual error variances |
+| `--bfile` | FILE | Required | PLINK bed/bim/fam filename prefix |
+| `--snp_info_file` | FILE | Required | SNP info file |
+| `--snp_weight_name` |  STRING | Optional | Must be a column header of the SNP info file and specify which column to use for weighting SNP effect variances |
+| `--beta_weight_parameters` | STRING | Optional | Specify two parameters (a and b) in the [beta distribution](https://en.wikipedia.org/wiki/Beta_distribution) PDF to use scaled beta_pdf(MAF; a, b) as SNP weights  [default is `1,1`] |
+| `--covariate_file` | FILE | Optional | Covariate file |
+| `--covariate_names` | STRING | Optional | Comma separated list of covariates to include in the analysis |
+| `--output_file` | FILE | Required | Output filename or prefix |
+| `window_size` | INT | Optional | Number of SNPs in a window for `--iter_weighting` [default=20] and `--lmm` [default=1000] |
+| `--num_threads` | INT | Optional | Number of computational threads to use [default=1] |
+| `--subset_size` | INT | Optional | Number of SNPs in a subset [default=1000] |
+
 
 
 ## GREML
