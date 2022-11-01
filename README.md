@@ -13,7 +13,7 @@ SLEMM is a software tool for large-scale genomic predictions and genome-wide ass
 
 ```console
 cd src
-# Change the EIGEN path in Makefile before compiling.
+# Change the Eigen path in Makefile before compiling.
 make
 ```
 
