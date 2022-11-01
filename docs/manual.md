@@ -3,21 +3,24 @@
 ## Input
 ### Phenotype file format
 - CSV file with a header line
-- The phenotype file is required.
+- Required
 - The first column must list individual IDs, and each of the following columns lists phenotypes for a trait.
 ### Genotype file format
 - PLINK bed/bim/fam files
-- The genotype file is required.
+- Required
 - Family IDs are not used.
 ### SNP info file format
 - CSV file with a header line
-- The SNP info file is required.
-- The first column must list SNP IDs.
+- Required
+- The first column must list SNP IDs, each of the following columns (if any) lists user-specified prior weights for SNP effect variance.
 - Only SNPs available in both the SNP info file and the genotype file are included in analysis. 
 ### Covariate file format
 - CSV file with a header line
-- The covariate file is optional.
+- Optional
 - The first column must list individual IDs.
+
+## Options
+
 
 ## GREML
 * --reml
