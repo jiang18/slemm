@@ -78,5 +78,7 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify s
 | `--snp_estimate_file` | FILE | Required | SNP effect estimate file (e.g., the reml.snp.csv file produced by `--reml` or `--lmm`) |
 | `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value  |
 
-## Output
+## Genomic prediction
+
+## Mixed-model associations
 
