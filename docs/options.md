@@ -33,7 +33,7 @@ SLEMM has the following three major functions:
 | `--bfile` | FILE PREFIX | Required | PLINK bed/bim/fam filename prefix |
 | `--snp_info_file` | FILE | Required | SNP info file |
 | `--snp_weight_name` |  STRING | Optional | Must be a column header of the SNP info file and specify which column to use for weighting SNP effect variances |
-| `--beta_weight_parameters` | STRING | Optional | Specify two parameters (a and b) in the [beta distribution](https://en.wikipedia.org/wiki/Beta_distribution) PDF to use scaled beta_pdf(MAF; a, b) as SNP weights  [default is `1,1`] |
+| `--beta_weight_parameters` | STRING | Optional | Specify two parameters (*a* and *b*) in the [beta distribution](https://en.wikipedia.org/wiki/Beta_distribution) PDF to use scaled beta_pdf(minor-allele-freq; *a*, *b*) as SNP weights  [default is `1,1`] |
 | `--covariate_file` | FILE | Optional | Covariate file |
 | `--covariate_names` | STRING | Optional | Comma separated list of covariates to include in the analysis |
 | `--output_file` | FILE PREFIX | Required | Output filename prefix |
