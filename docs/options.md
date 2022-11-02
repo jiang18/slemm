@@ -3,6 +3,7 @@
 - CSV file with a header line
 - Required
 - The first column must list individual IDs, and each of the following columns lists phenotypes for a trait.
+- If phenotypes are deregressed EBVs, an additional column of 1/r^2-1 may be available for each trait, where r^2 is the reliability of individual EBVs for that trait. 
 ### Genotype file format
 - PLINK bed/bim/fam files
 - Required
@@ -77,15 +78,5 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify s
 | `--snp_estimate_file` | FILE | Required | SNP effect estimate file (e.g., the reml.snp.csv file produced by `--reml` or `--lmm`) |
 | `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value  |
 
+## Output
 
-
-## GREML
-* --reml
-* 
-
-## Genomic Prediction
-
-## GWAS
-
-## Error weight
-The argument ```--error_weight_name``` can be added in --reml/--wls/--lmm to weight individual error variance. To enable this, add one additional column in the phenotype CSV file and specify the header name by --error_weight_name. Values are typically 1/r^2-1, where r^2 is the reliability of deregressed EBVs. 
