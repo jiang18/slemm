@@ -1,5 +1,3 @@
-# User Manual for SLEMM
-
 ## Input
 ### Phenotype file format
 - CSV file with a header line
@@ -20,7 +18,7 @@
 - The first column must list individual IDs.
 
 ## Options
-### REML or LMM
+### Common options of REML and LMM
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--phenotype_file` | FILE | Required | Phenotype file |
@@ -36,26 +34,26 @@
 | `--window_size` | INT | Optional | Number of SNPs in a window for `--iter_weighting` [default=20] and `--lmm` [default=1000] |
 | `--num_threads` | INT | Optional | Number of computational threads to use [default=1] |
 | `--subset_size` | INT | Optional | Number of SNPs in a subset [default=1000] |
-### SNP filtering
-| Option | Argument | Type | Description |
-|-------|-------|-------|--------------|
 | `--min_maf` | FLOAT | Optional | Filter out SNPs with a minor allele frequency below or equal to the provided threshold [default=0] |
 | `--min_hwe_pval` | FLOAT | Optional | Filter out SNPs with Hardy-Weinberg equilibrium exact test p-value below the provided threshold [default=0] |
 | `--hwe_midp` | FLAG | Optional | Specify the mid-p adjustment in Hardy-Weinberg equilibrium exact tests |
-### Stochastic Lanczos REML
-| Option | Argument | Type | Description |
-|-------|-------|-------|--------------|
 | `--rel_tol` | FLOAT | Optional | Relative tolerance for the Lanczos decomposition [default=5e-4] |
 | `--num_random_vectors` | INT | Optional | Number of random probing vectors [default=30] |
-### Predicting genomic breeding values
+
+### Options specific to REML
+
+
+### Options specific to LMM
+
+
+### Options for prediction of genomic breeding values
+- This function is similar to --score of PLINK.
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--prediction` | FLAG | Required | To predict genomic breeding values |
 | `--bfile` | FILE | Required | PLINK bed/bim/fam filename prefix |
 | `--snp_estimate_file` | FILE | Required | SNP effect estimate file (e.g., the reml.snp.csv file produced by `--reml` or `--lmm`) |
 | `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value  |
-
-- This function is similar to --score in PLINK.
 
 
 
