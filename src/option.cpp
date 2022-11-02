@@ -94,7 +94,7 @@ void option(int option_num, char **option_str) {
 		{"subset_size",    required_argument, 0, 'z'},
 		{"rel_tol",    required_argument, 0, 'r'},
 		{"reml",  no_argument, 0, 'R'},
-		{"num_random_probes",  required_argument, 0, 'k'},
+		{"num_random_vectors",  required_argument, 0, 'k'},
 		{"lmm",  no_argument, 0, 'L'},
 		{"num_qf_markers",  required_argument, 0, 'f'},
 		{"window_size",  required_argument, 0, 'q'},
