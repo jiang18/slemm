@@ -80,5 +80,5 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify s
 
 ## Genomic prediction
 
-## Mixed-model associations
+## Genome-wide association study
 
