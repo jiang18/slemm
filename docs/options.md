@@ -3,7 +3,7 @@
 - CSV file with a header line
 - Required
 - The first column must list individual IDs, and each of the following columns lists phenotypes for a trait.
-- If phenotypes are deregressed EBVs, an additional column of 1/*r*<sup>2</sup>-1 may be available for each trait, where *r*<sup>2</sup> is the reliability of individual EBVs for that trait. 
+- If phenotypes are deregressed EBVs, an additional column of 1/*r*<sup>2</sup>-1 may be available for each trait to represent individual error variance weights, where *r*<sup>2</sup> is the reliability of individual EBVs for that trait. 
 ### Genotype file format
 - PLINK bed/bim/fam files
 - Required
