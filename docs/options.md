@@ -20,7 +20,7 @@
 - The first column must list individual IDs.
 
 ## Options
-### Basic options
+### REML or LMM
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--phenotype_file` | FILE | Required | Phenotype file |
@@ -47,8 +47,15 @@
 |-------|-------|-------|--------------|
 | `--rel_tol` | FLOAT | Optional | Relative tolerance for the Lanczos decomposition [default=5e-4] |
 | `--num_random_vectors` | INT | Optional | Number of random probing vectors [default=30] |
+### Predicting genomic breeding values
+| Option | Argument | Type | Description |
+|-------|-------|-------|--------------|
+| `--prediction` | FLAG | Required | To predict genomic breeding values |
+| `--bfile` | FILE | Required | PLINK bed/bim/fam filename prefix |
+| `--snp_estimate_file` | FILE | Required | SNP effect estimate file (e.g., the reml.snp.csv file produced by `--reml` or `--lmm`) |
+| `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value  |
 
-
+- This function is similar to --score in PLINK.
 
 
 
