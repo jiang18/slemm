@@ -3,7 +3,7 @@
 - CSV file with a header line
 - Required
 - The first column must list individual IDs, and each of the following columns lists phenotypes for a trait.
-- If phenotypes are deregressed EBVs, an additional column of 1/*r*<sup>2</sup>-1 may be available for each trait to represent individual error variance weights, where *r*<sup>2</sup> is the reliability of individual EBVs for that trait. 
+- If phenotypes are deregressed EBVs, an additional column of $(1-r^2)/r^2$ may be available for each trait to represent individual error variance weights, where $r^2$ is the reliability of individual EBVs for that trait. 
 ### Genotype file format
 - PLINK bed/bim/fam files
 - Required
@@ -29,15 +29,15 @@ SLEMM has the following three major functions:
 |-------|-------|-------|--------------|
 | `--phenotype_file` | FILE | Required | Phenotype file |
 | `--trait` | STRING` | Required | Must be a column header of the phenotype file and specify which trait to analyze |
-| `--error_weight_name` | STRING | Optional | Must be a column header of the phenotype file and specify which column to use for weighting individual error variances |
+| `--error_weight_name` | STRING | Optional | Must be a column header of the phenotype file and specify which column to use as individual error variance weights |
 | `--bfile` | FILE PREFIX | Required | PLINK bed/bim/fam filename prefix |
 | `--snp_info_file` | FILE | Required | SNP info file |
-| `--snp_weight_name` |  STRING | Optional | Must be a column header of the SNP info file and specify which column to use for weighting SNP effect variances |
-| `--beta_weight_parameters` | STRING | Optional | Specify two parameters (*a* and *b*) in the [beta distribution](https://en.wikipedia.org/wiki/Beta_distribution) PDF to use scaled beta_pdf(minor-allele-freq; *a*, *b*) as SNP weights  [default is `1,1`] |
+| `--snp_weight_name` |  STRING | Optional | Must be a column header of the SNP info file and specify which column to use as SNP effect variance weights |
+| `--beta_weight_parameters` | STRING | Optional | Specify $\alpha$ and $\beta$ as in $f(x;\alpha,\beta)=\text{const}\cdot x^{(\alpha-1)}(1-x)^{(\beta-1)}$ ([beta distribution](https://en.wikipedia.org/wiki/Beta_distribution)) to use $f(\text{MAF};\alpha,\beta)$ as SNP effect variance weights [default is `1,1`] |
 | `--covariate_file` | FILE | Optional | Covariate file |
 | `--covariate_names` | STRING | Optional | Comma separated list of covariates to include in the analysis |
 | `--output_file` | FILE PREFIX | Required | Output filename prefix |
-| `--max_heritability` | FLOAT | Optional | Specify a sufficiently large value (*h*<sup>2</sup><sub>max</sub>) so that the search for heritability falls in (1e-4, *h*<sup>2</sup><sub>max</sub>) [default=0.7] |
+| `--max_heritability` | FLOAT | Optional | Specify a sufficiently large value $h^2_{max}$ so that the search for heritability falls in (1e-4, $h^2_{max}$) [default=0.7] |
 | `--lrt` | FLAG | Optional | Flag to perform likelihood-ratio test |
 | `--num_threads` | INT | Optional | Number of computational threads to use [default=1] |
 | `--window_size` | INT | Optional | Number of SNPs in a window for `--iter_weighting` [default=20] and `--lmm` [default=1000] |
