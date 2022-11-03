@@ -1,5 +1,8 @@
 # Change Log
 
+## Oct 30, 2022
+- Auto-disabled --iter_weighting if --window_size is larger than the total number of SNPs.
+
 ## Aug 22, 2022
 - Fixed a minor issue in genotype reading.
 
