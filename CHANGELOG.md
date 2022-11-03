@@ -1,6 +1,6 @@
 # Change Log
 
-## Oct 30, 2022
+## Oct 30, 2022 (v0.89.3)
 - Auto-disabled --iter_weighting if --window_size is larger than the total number of SNPs.
 
 ## Aug 22, 2022
