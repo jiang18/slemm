@@ -105,4 +105,6 @@ python3 slemm_gwa.py --help
 - `--lmm` is required.
 - `--num_threads` should be proporly set on a multi-core computer to speed up computations.
 - `--max_heritability` should be set **slightly larger** than the true heritability. Its default value is usually too big. 
-- `--window_size` affects the computation of mixed-model associations in `slemm_gwa`. The larger `--window_size`, the more accurate approximation of mixed-model associations but the more intensive computations by `slemm_gwa`. Its default value generally works well for livestock data.
+- `--window_size` affects the computation of mixed-model associations in `slemm_gwa`. The larger `--window_size`, the more accurate approximation of mixed-model associations but the more intensive computations. Its default value generally works well for livestock data.
+> **Note**
+> The behavior of `--window_size` in `--reml` differs from that in `--lmm`.
