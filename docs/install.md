@@ -7,6 +7,8 @@ SLEMM consists of one C++ program (`slemm`) and two Python programs (`slemm_gamm
 - Binary executables are available in the [Releases](https://github.com/jiang18/slemm/releases).
 - `slemm` is statically compiled with the Intel Math Kernel Library on CentOS Linux 7.
 - `slemm_gamma` and `slemm_gwa` are statically compiled on CentOS Linux 7.
+> **Note**
+> `slemm` should be executable. Type `chmod +x slemm*` on the command line if needed.
 
 ### Compilation of `slemm`
 1. Requirements
