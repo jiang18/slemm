@@ -23,15 +23,17 @@
 
 ## Options
 `slemm` has the following three major functions:
-- REML and prediction of SNP effects (`--reml`)
-- mixed-model associations (`--lmm`)
-- prediction of genomic breeding values (`--pred`)
+| Function | Flag |
+|----------|----------|
+| REML and prediction of SNP effects | `--reml` |
+| mixed-model associations | `--lmm` |
+| prediction of genomic breeding values | `--pred` |
 
 ### Common options of `--reml` and `--lmm`
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--phenotype_file` | FILE | Required | Phenotype file |
-| `--trait` | STRING` | Required | Must be a column header of the phenotype file and specify which trait to analyze |
+| `--trait` | STRING | Required | Must be a column header of the phenotype file and specify which trait to analyze |
 | `--error_weight_name` | STRING | Optional | Must be a column header of the phenotype file and specify which column to use as individual error variance weights |
 | `--bfile` | FILE PREFIX | Required | PLINK bed/bim/fam filename prefix |
 | `--snp_info_file` | FILE | Required | SNP info file |
