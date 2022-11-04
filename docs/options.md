@@ -63,12 +63,13 @@
 | `--reml` | FLAG | Required | To run GREML |
 | `--iter_weighting` | FLAG | Optional | Flag to run iterative SNP weighting |
 
-When `--iter_weighting` is set, SLEMM has two more options to quickly identify significant, independent SNPs to be fitted as fixed effects. No SNPs can be fitted as fixed by default, because the default chi-square threshold is set to 1e6.
-
+When `--iter_weighting` is set, SLEMM has two more options to quickly identify independent significant SNPs to be fitted as fixed effects.
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--sig_chisq` | FLOAT | Optional | Specify a chi-square threshold of significance for approximate single-SNP associations [default=1e6] |
 | `--indep_r2` | FLOAT | Optional | Specify an r2 threshold for identifying independent SNPs from significant ones [default=0.5] |
+> **Note**
+> No SNPs can be fitted as fixed by default, because any SNP's chi-square test statistic should in practice be below the default threshold (1e6).
 
 ### Options specific to `--lmm`
 | Option | Argument | Type | Description |
@@ -87,7 +88,11 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify s
 | `--snp_estimate_file` | FILE | Required | SNP effect estimate file (e.g., the **\*.reml.snp.csv** file produced by `--reml` or `--lmm`) |
 | `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value  |
 
-## Genomic prediction
+### Options of `slemm_gamma`
 
-## Genome-wide association study
+### Options of `slemm_gwa`
+
+## Setting options for genomic predictions
+
+## Setting options for GWAS
 
