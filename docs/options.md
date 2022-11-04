@@ -22,10 +22,10 @@
 - The first column must list individual IDs.
 
 ## Options
-SLEMM has the following three major functions:
+`slemm` has the following three major functions:
 - REML and prediction of SNP effects (`--reml`)
-- Mixed-model associations (`--lmm`)
-- Prediction of genomic breeding values (`--pred`)
+- mixed-model associations (`--lmm`)
+- prediction of genomic breeding values (`--pred`)
 
 ### Common options of REML and LMM
 | Option | Argument | Type | Description |
