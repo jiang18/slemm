@@ -40,7 +40,7 @@
 | `--snp_weight_name` |  STRING | Optional | Must be a column header of the SNP info file and specify which column to use as SNP effect variance weights |
 | `--beta_weight_parameters` | STRING | Optional | Specify $\alpha$ and $\beta$ as in $f(x;\alpha,\beta)=\text{const}\cdot x^{(\alpha-1)}(1-x)^{(\beta-1)}$ ([beta distribution](https://en.wikipedia.org/wiki/Beta_distribution)) to use $f(\text{MAF};\alpha,\beta)$ as SNP effect variance weights [default is `1,1`] |
 | `--covariate_file` | FILE | Optional | Covariate file |
-| `--covariate_names` | STRING | Optional | Comma separated list of covariates to include in the analysis |
+| `--covariate_names` | STRING | Optional | Comma-separated list of covariates to include in the analysis |
 | `--output_file` | FILE PREFIX | Required | Output filename prefix |
 | `--max_heritability` | FLOAT | Optional | Specify a sufficiently large value $h^2_{max}$ so that the search for heritability falls in (1e-4, $h^2_{max}$) [default=0.7] |
 | `--lrt` | FLAG | Optional | Flag to perform likelihood-ratio test |
@@ -74,7 +74,8 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify s
 | `--num_qf_markers` | INT | Optional | Specify the number of SNPs for computing quadratic-form statistics [default=30] |
 
 ### Options for prediction of genomic breeding values
-- This function is similar to --score of PLINK.
+> **Note** 
+> This function is similar to --score of PLINK.
 
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
