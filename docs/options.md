@@ -5,7 +5,7 @@
 ### Phenotype file format
 - CSV file with a header line
 - Required
-- The first column must list individual IDs, and each of the following columns lists phenotypes for a trait.
+- The first column must be individual IDs, and each of the following columns lists phenotypes for a trait.
 - If phenotypes are deregressed EBVs, an additional column of $(1-r^2)/r^2$ may be available for each trait to represent individual error variance weights, where $r^2$ is the reliability of individual EBVs for that trait. 
 ### Genotype file format
 - PLINK bed/bim/fam files
@@ -27,7 +27,7 @@
 - mixed-model associations (`--lmm`)
 - prediction of genomic breeding values (`--pred`)
 
-### Common options of REML and LMM
+### Common options of `--reml` and `--lmm`
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--phenotype_file` | FILE | Required | Phenotype file |
@@ -52,7 +52,7 @@
 | `--seed` | INT | Optional | Random seed [default=0] |
 | `--subset_size` | INT | Optional | Number of SNPs in a subset [default=1000] |
 
-### Options specific to REML
+### Options specific to `--reml`
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--reml` | FLAG | Required | To run GREML |
@@ -65,7 +65,7 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify s
 | `--sig_chisq` | FLOAT | Optional | Specify a chi-square threshold of significance for approximate single-SNP associations [default=1e6] |
 | `--indep_r2` | FLOAT | Optional | Specify an r2 threshold for identifying independent SNPs from significant ones [default=0.5] |
 
-### Options specific to LMM
+### Options specific to `--lmm`
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--lmm` | FLAG | Required | To run step 1 for mixed-model associations |
