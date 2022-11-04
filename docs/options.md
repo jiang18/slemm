@@ -93,7 +93,6 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify i
 python3 slemm_gamma.py --help 
 python3 slemm_gwa.py --help
 ```
-
 ## Setting options for genomic predictions
 
 ## Setting options for GWAS
