@@ -29,6 +29,9 @@
 | mixed-model associations | `--lmm` |
 | prediction of genomic breeding values | `--pred` |
 
+> **Note**
+> Option names may be abbreviated if the abbreviation is unique or is an exact match for some defined option; e.g., `--phenotype` works the same as `--phenotype_file`.
+
 ### Common options of `--reml` and `--lmm`
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
