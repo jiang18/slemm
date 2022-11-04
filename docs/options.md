@@ -88,9 +88,9 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify i
 | `--snp_estimate_file` | FILE | Required | SNP effect estimate file (e.g., the **\*.reml.snp.csv** file produced by `--reml` or `--lmm`) |
 | `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value  |
 
-### Options of `slemm_gamma`
-
-### Options of `slemm_gwa`
+### Options of `slemm_gamma` and `slemm_gwa`
+`python3 slemm_gamma.py --help` 
+`python3 slemm_gwa.py --help`
 
 ## Setting options for genomic predictions
 
