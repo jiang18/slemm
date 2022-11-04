@@ -11,7 +11,7 @@ SLEMM consists of one C++ program (`slemm`) and two Python programs (`slemm_gamm
     - Eigen >= 3.3.7
 2. Change the Eigen path in `Makefile`. 
 3. On the command line type `make` while in the directory containing the `Makefile`.
-4. This should produce the executable called `slemm`.
+4. This should produce the executable named `slemm`.
 
 ### Use of `slemm_gamma.py` and `slemm_gwa.py`
 1. Dependencies
