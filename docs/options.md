@@ -75,13 +75,13 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify s
 
 ### Options for prediction of genomic breeding values
 > **Note** 
-> This function is similar to --score of PLINK.
+> This function is similar to `--score` of PLINK.
 
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--prediction` | FLAG | Required | To predict genomic breeding values |
 | `--bfile` | FILE PREFIX | Required | PLINK bed/bim/fam filename prefix |
-| `--snp_estimate_file` | FILE | Required | SNP effect estimate file (e.g., the reml.snp.csv file produced by `--reml` or `--lmm`) |
+| `--snp_estimate_file` | FILE | Required | SNP effect estimate file (e.g., the **\*.reml.snp.csv** file produced by `--reml` or `--lmm`) |
 | `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value  |
 
 ## Genomic prediction
