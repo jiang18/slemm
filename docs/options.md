@@ -95,6 +95,10 @@ python3 slemm_gwa.py --help
 ```
 
 ## Setting options for genomic predictions
+- `--num_threads` should be proporly set on a multi-core computer to speed up computations.
+- `--max_heritability` should be larger than the true value.  
+- `--iter_weighting` is particularly needed for traits underlain by large-effect QTLs.
+- `--window_size`
 
 ## Setting options for GWAS
 
