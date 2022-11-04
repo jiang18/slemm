@@ -3,6 +3,11 @@ SLEMM consists of one C++ program (`slemm`) and two Python programs (`slemm_gamm
 - The C++ program is used for genomic predictions and GWAS step 1.
 - The two Python programs are used for GWAS step 2.
 
+### Binary executables
+- Binary executables are available in the [Releases](https://github.com/jiang18/slemm/releases).
+- `slemm` is statically compiled with the Intel Math Kernel Library on CentOS Linux 7.
+- `slemm_gamma` and `slemm_gwa` are statically compiled on CentOS Linux 7.
+
 ### Compilation of `slemm`
 1. Requirements
     - Linux x86_64
@@ -18,8 +23,3 @@ SLEMM consists of one C++ program (`slemm`) and two Python programs (`slemm_gamm
     - Linux packages: python3, python3-devel, gcc, and gcc-c++
     - Python packages: cython, numpy, scipy, and [pgenlib](https://github.com/chrchang/plink-ng/tree/master/2.0/Python)
 2. `python3 slemm_gwa.py --help`
-
-### Binary executables
-- Binary executables are available in the [Releases](https://github.com/jiang18/slemm/releases).
-- `slemm` is statically compiled with the Intel Math Kernel Library on CentOS Linux 7.
-- `slemm_gamma` and `slemm_gwa` are statically compiled on CentOS Linux 7.
