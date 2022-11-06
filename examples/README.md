@@ -8,7 +8,7 @@ genosim
 ```
 - Enter the data folder.
 - The Perl script generates pedigree.file and genotype.data0 for 10k unrelated individuals. 
-- Run genosim.
+- Run `genosim`.
 ## Convert genosim output files to PLINK files
 ```console
 perl ../scripts/aipl2plink.pl 10k
@@ -21,7 +21,7 @@ slemm --pred --binary_genotype 10k --snp_estimate 1.snp.csv --output 10k.gv.csv
 Rscript --no-save ../scripts/sim_phe.R 10k 0.3
 ```
 - The Perl script simulates SNP effects.
-- slemm computes total genetic values.
+- `slemm` computes total genetic values.
 - The R script simulates phenotypes with a heritability of 0.3.
 # SLEMM
 ## SNP info file
@@ -46,9 +46,9 @@ slemm --lmm --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../dat
 OMP_NUM_THREADS=1 slemm_gamma.py --pfile ../data/10k --slemm 10k --out 10k.gamma.txt
 OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.txt --chr 1
 ```
-- slemm --lmm fits linear mixed model for genome-wide associations.
-- slemm_gamma.py computes GRAMMAR-Gamma association statistics for each SNP using the output of --lmm.
-- slemm_gwa.py computes single-SNP association statistics closely approximating EMMAX. 
+- `slemm --lmm` fits linear mixed model for genome-wide associations.
+- `slemm_gamma.py` computes GRAMMAR-Gamma association statistics for each SNP using the output of --lmm.
+- `slemm_gwa.py` computes single-SNP association statistics closely approximating EMMAX. 
 
 ```bash
 export OMP_NUM_THREADS=10
@@ -63,7 +63,6 @@ for i in `seq 2 30`; do tail -n +2 10k.chr$i.txt >> 10k.chrAll.txt; rm 10k.chr$i
 cd ..
 mkdir bolt
 cd bolt
-
 ~/software/BOLT-LMM_v2.3.4/bolt \
   --lmmInfOnly --bed=../data/10k.bed --bim=../data/10k.bim --fam=../data/10k.fam \
   --phenoFile=../data/10k.bolt.txt --phenoCol=QT \
