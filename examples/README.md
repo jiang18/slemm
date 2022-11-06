@@ -17,7 +17,7 @@ plink --file 10k --make-bed --out 10k --chr-set 30
 ## Simulate phenotypes based on genotypes
 ```console
 perl ../scripts/sim_snp_effects.pl 1.snp.csv
-slemm --pred --binary_genotype 10k --snp_estimate 1.snp.csv --output 10k.gv.csv
+slemm --pred --bfile 10k --snp_estimate 1.snp.csv --output 10k.gv.csv
 Rscript --no-save ../scripts/sim_phe.R 10k 0.3
 ```
 - The Perl script simulates SNP effects.
@@ -34,15 +34,15 @@ perl -e 'print "SNP\n"; while(<>) {@c=split /\s+/; print "$c[1]\n"}' < ../data/1
 - The SNP info file is a CSV file with a header line and specifies what SNPs to be included in SLEMM.
 ## REML
 ```console
-slemm --reml --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
+slemm --reml --phenotype_file ../data/10k.slemm.csv --bfile ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
 ```
 ## Prediction of genomic breeding values
 ```console
-slemm --pred --binary_genotype_file ../data/10k --snp_estimate 10k.reml.snp.csv --out 10k.gebv.csv
+slemm --pred --bfile ../data/10k --snp_estimate 10k.reml.snp.csv --out 10k.gebv.csv
 ```
 ## LMM and GWA
 ```console
-slemm --lmm --phenotype_file ../data/10k.slemm.csv --binary_genotype_file ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
+slemm --lmm --phenotype_file ../data/10k.slemm.csv --bfile ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
 OMP_NUM_THREADS=1 slemm_gamma.py --pfile ../data/10k --slemm 10k --out 10k.gamma.txt
 OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.txt --chr 1
 ```
