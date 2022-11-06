@@ -46,7 +46,6 @@
 | `--covariate_names` | STRING | Optional | Comma-separated list of covariates to include in the analysis |
 | `--output_file` | FILE PREFIX | Required | Output filename prefix |
 | `--max_heritability` | FLOAT | Optional | Specify a sufficiently large value $h^2_{max}$ so that the search for heritability falls in (1e-4, $h^2_{max}$) [default=0.7] |
-| `--lrt` | FLAG | Optional | Flag to perform likelihood-ratio test |
 | `--num_threads` | INT | Optional | Number of computational threads to use [default=1] |
 | `--window_size` | INT | Optional | Number of SNPs in a window for `--iter_weighting` [default=20] and `--lmm` [default=1000] |
 | `--min_maf` | FLOAT | Optional | Filter out SNPs with an MAF below or equal to the provided threshold [default=0] |
@@ -61,6 +60,7 @@
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--reml` | FLAG | Required | To run GREML |
+| `--lrt` | FLAG | Optional | Flag to perform likelihood-ratio test |
 | `--iter_weighting` | FLAG | Optional | Flag to run iterative SNP weighting |
 
 When `--iter_weighting` is set, SLEMM has two more options to quickly identify independent significant SNPs to be fitted as fixed effects.
