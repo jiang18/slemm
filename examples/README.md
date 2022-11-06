@@ -49,7 +49,8 @@ OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.t
 - `slemm --lmm` fits linear mixed model for genome-wide associations.
 - `slemm_gamma.py` computes GRAMMAR-Gamma association statistics for each SNP using the output of --lmm.
 - `slemm_gwa.py` computes single-SNP association statistics closely approximating EMMAX. 
-
+> **Note**
+> Association tests for all chromosomes
 ```bash
 export OMP_NUM_THREADS=10
 for i in `seq 1 30`; do slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr$i.txt --chr $i; done
@@ -57,7 +58,7 @@ for i in `seq 1 30`; do slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.c
 mv 10k.chr1.txt 10k.chrAll.txt
 for i in `seq 2 30`; do tail -n +2 10k.chr$i.txt >> 10k.chrAll.txt; rm 10k.chr$i.txt; done
 ```
-- Association tests for all chromosomes
+
 # [BOLT](https://alkesgroup.broadinstitute.org/BOLT-LMM/BOLT-LMM_manual.html)
 ```console
 cd ..
@@ -69,6 +70,7 @@ cd bolt
   --numThreads=10 --Nautosomes=30 --LDscoresUseChip \
   --verboseStats --statsFile=10k.lmm.txt
 ```
+
 # [PLINK](https://www.cog-genomics.org/plink/1.9/)
 ```console
 cd ..
