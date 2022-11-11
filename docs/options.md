@@ -97,14 +97,14 @@ python3 slemm_gwa.py --help
 ## Setting options for genomic predictions
 - `--reml` is required.
 - `--num_threads` should be proporly set on a multi-core computer to speed up computations.
-- `--max_heritability` should be set **slightly larger** than the true heritability. Its default value is usually too big.
+- `--max_heritability` should be set **slightly larger** than the actual (pseudo-)heritability; e.g., `--max_herit 0.4` can be used for dairy milk yield traits because we know they are moderately heritable. A large value works but results in unnecessary computation. Its default value is **unnecessarily** large for most traits.
 - `--iter_weighting` is particularly needed for traits underlain by large-effect QTLs.
 - `--window_size` is only useful when `--iter_weighting` is set. Its default value generally works well.
 
 ## Setting options for GWAS
 - `--lmm` is required.
 - `--num_threads` should be proporly set on a multi-core computer to speed up computations.
-- `--max_heritability` should be set **slightly larger** than the true heritability. Its default value is usually too big. 
+- `--max_heritability` should be set **slightly larger** than the actual (pseudo-)heritability; e.g., `--max_herit 0.4` can be used for dairy milk yield traits because we know they are moderately heritable. A large value works but results in unnecessary computation. Its default value is **unnecessarily** large for most traits.
 - `--window_size` affects the computation of mixed-model associations in `slemm_gwa`. The larger `--window_size`, the more accurate approximation of mixed-model associations but the more intensive computations. Its default value generally works well for livestock data.
 > **Note**
 > The behavior of `--window_size` in `--reml` differs from that in `--lmm`.
