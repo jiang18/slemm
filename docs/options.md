@@ -1,7 +1,7 @@
 ## Table of contents
 - [Input](#input)
 - [Options](#options)
-    - [Common options of `--reml` and `--lmm`](#common-options-of---reml-and---lmm)
+    - [Common options of `--reml` and `--lmm`](#common-options-of-reml-and---lmm)
     - [Options specific to `--reml`](#options-specific-to---reml)
     - [Options specific to `--lmm`](#options-specific-to---lmm)
     - [Options for prediction of genomic breeding values](#options-for-prediction-of-genomic-breeding-values)
