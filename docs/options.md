@@ -1,3 +1,9 @@
+## Table of contents
+- [Input](#input)
+- [Options](#options)
+- [Setting options for genomic predictions](#setting-options-for-genomic-predictions)
+- [Setting options for GWAS](#setting-options-for-gwas)
+
 ## Input
 > **Note** 
 > Missing values in any input file should be left blank. Do not use -9, NA, or NaN.
