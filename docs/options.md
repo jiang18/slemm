@@ -1,6 +1,7 @@
 ## Table of contents
 - [Input](#input)
 - [Options](#options)
+    - [Common options of `--reml` and `--lmm`](#common-options)
 - [Setting options for genomic predictions](#setting-options-for-genomic-predictions)
 - [Setting options for GWAS](#setting-options-for-gwas)
 
