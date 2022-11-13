@@ -2,6 +2,10 @@
 - [Input](#input)
 - [Options](#options)
     - [Common options of `--reml` and `--lmm`](#common-options-of---reml-and---lmm)
+    - [Options specific to `--reml`](#options-specific-to---reml)
+    - [Options specific to `--lmm`](#options-specific-to---lmm)
+    - [Options for prediction of genomic breeding values](#options-for-prediction-of-genomic-breeding-values)
+    - [Options of `slemm_gamma` and `slemm_gwa`](#options-of-slemm_gamma-and-slemm_gwa)
 - [Setting options for genomic predictions](#setting-options-for-genomic-predictions)
 - [Setting options for GWAS](#setting-options-for-gwas)
 
