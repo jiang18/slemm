@@ -25,3 +25,9 @@ SLEMM consists of one C++ program (`slemm`) and two Python programs (`slemm_gamm
     - Linux packages: python3, python3-devel, gcc, and gcc-c++
     - Python packages: cython, numpy, scipy, and [pgenlib](https://github.com/chrchang/plink-ng/tree/master/2.0/Python)
 2. `python3 slemm_gwa.py --help`
+
+### For Windows
+Windows Subsystem for Linux (WSL) can be used to run SLEMM on a Windows machine.
+1. [Install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+    - Ubuntu will be installed by default, and other Linux distributions are available. 
+2. Run [pre-compiled SLEMM binaries](https://github.com/jiang18/slemm/releases) on a WSL Linux distribution as on a Linux machine.

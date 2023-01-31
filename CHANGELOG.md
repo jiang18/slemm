@@ -1,5 +1,9 @@
 # Change Log
 
+## Jan 31, 2023 (v0.89.5)
+- Changed over from ctime to chrono for timing. 
+- Fixed a bug that caused a segmentation fault when using the binary executables in recent Linux versions.
+
 ## Oct 30, 2022 (v0.89.3)
 - Auto-disabled --iter_weighting if --window_size is larger than the total number of SNPs.
 
