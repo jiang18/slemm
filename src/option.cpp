@@ -1,5 +1,7 @@
 
 #include <getopt.h>
+#include <chrono>
+#include <ctime>
 #include "slemm.h"
 #include "reml.h"
 #include "wls.h"
@@ -12,18 +14,23 @@ int main(int argc, char **argv)
 	std::cout<<"*******************************************************************"<<std::endl;
 	std::cout<<"* SLEMM by Jicai Jiang"<<std::endl;
 	std::cout<<"* Stochastic-Lanczos-Expedited Mixed Models"<<std::endl;
-	std::cout<<"* Version 0.89.3 (October 30, 2022)"<<std::endl;
+	std::cout<<"* Version 0.89.5 (January 31, 2023)"<<std::endl;
 	std::cout<<"* (C) 2021-present, Jicai Jiang, NC State University"<<std::endl;
 	std::cout<<"*******************************************************************"<<std::endl;
 	
-	time_t start=std::time(nullptr);
-	std::cout<<"Analysis started: "<<std::ctime(&start)<<std::endl;
+	std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
+	std::time_t start_time = std::chrono::system_clock::to_time_t(start);
+	std::cout<<"Analysis started: "<<std::ctime(&start_time)<<std::endl;
+	
 	try{ option(argc, argv); }
 	catch(const std::string &err_msg){ std::cerr<<"\n"<<err_msg<<std::endl; }
 	catch(const char *err_msg){ std::cerr<<"\n"<<err_msg<<std::endl; }
-	time_t end=std::time(nullptr);
-	std::cout<<"\nAnalysis finished: "<<std::ctime(&end);
-	long time_used=end-start;
+	
+	std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
+	std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+	std::cout<<"\nAnalysis finished: "<<std::ctime(&end_time);
+	std::chrono::duration<double> elapsed_seconds = end - start;
+	long time_used = static_cast<long>(elapsed_seconds.count());
 	std::cout<<"Computational time: "<<time_used/3600<<":"<<(time_used%3600)/60<<":"<<time_used%60<<std::endl;
 
 	return 0;
