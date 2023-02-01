@@ -1,4 +1,5 @@
 #include "reml.h"
+#include <bits/stdc++.h>
 #include <tuple>
 
 
@@ -702,7 +703,6 @@ float REML_first_order(
 	Ref<MatrixXf> Py       // returned value is exactly Py with V = ZWZ'+R(varE/varA).
 )
 {
-	const int m = Z.size();
 	const int n_MC = Py.cols()-1;
 	
 	float tau = (1-ss)/ss;

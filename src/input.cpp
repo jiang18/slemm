@@ -13,8 +13,8 @@ void cal_hwep_from_genobits(const std::vector<std::vector<bool> >& geno, const i
 	for(unsigned i=0; i<geno.size(); ++i) {
 		int n0 = 0, n1 = 0, n2 = 0;
 		for(unsigned j=0; j<geno[i].size(); j+=2) {
-			if(geno[i][j] & geno[i][j+1]) n2++;
-			else if(geno[i][j] | geno[i][j+1]) n1++;
+			if(geno[i][j] && geno[i][j+1]) n2++;
+			else if(geno[i][j] || geno[i][j+1]) n1++;
 			else n0++;
 		}
 		hwep(i) = SNPHWE2(n1, n0, n2, midp);
