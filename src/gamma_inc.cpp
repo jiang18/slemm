@@ -84,10 +84,10 @@ long double gamma_inc_F_CF(long double a, long double x)
 	    an = (0.5 * n - a)/x;
 
 	Dn = 1.0 + an * Dn;
-	if (std::abs(Dn) < LDBL_TINY)
+	if (fabsl(Dn) < LDBL_TINY)
 	    Dn = LDBL_TINY;
 	Cn = 1.0 + an/Cn;
-	if (std::abs(Cn) < LDBL_TINY)
+	if (fabsl(Cn) < LDBL_TINY)
 	    Cn = LDBL_TINY;
 	Dn = 1.0/Dn;
 	delta = Cn * Dn;
