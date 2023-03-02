@@ -4,6 +4,7 @@
 # Jul 02, 2022: printed the last modified date
 # Jul 30, 2022: improved the speed of associations
 # Jul 31, 2022: added a header line in output
+# Mar 02, 2023: made --maf/--mac behave like PLINK's
 
 #!/usr/bin/python3
 import pgenlib
@@ -108,7 +109,7 @@ if __name__ == "__main__":
     
     print("*******************************************************************")
     print("* SLEMM-Gamma by Jicai Jiang")
-    print("* Last Modified: Sun, 31 Jul 2022")
+    print("* Last Modified: Thu, 02 Mar 2023")
     print("*******************************************************************")
     
     args = get_parser().parse_args()
@@ -304,7 +305,7 @@ if __name__ == "__main__":
         pf.read(var_idx, int8vec_x)
         vec_x = int8vec_x.astype('float32')
         vec_x_sum = vec_x.sum()
-        if vec_x_sum < args.mac or (2*sample_ct - vec_x_sum) < args.mac:
+        if vec_x_sum <= args.mac or (2*sample_ct - vec_x_sum) <= args.mac:
             xy[list_idx] = np.nan
             xx[list_idx] = np.nan
             continue
