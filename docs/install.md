@@ -31,4 +31,4 @@ Windows Subsystem for Linux (WSL) can be used to run SLEMM on a Windows machine.
 1. [Install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
     - Ubuntu will be installed by default, and other Linux distributions are available. 
 2. Run [pre-compiled SLEMM binaries](https://github.com/jiang18/slemm/releases) on a WSL Linux distribution as on a Linux machine.
-    - The SLEMM binary is statically compiled on WSL Ubuntu 22 with Intel oneAPI and Eigen 3.3.9.
+    - Use the SLEMM binary that is statically compiled on WSL Ubuntu 22 with Intel oneAPI and Eigen 3.3.9.
