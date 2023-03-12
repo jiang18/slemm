@@ -67,6 +67,9 @@
 | `--seed` | INT | Optional | Random seed [default=0] |
 | `--subset_size` | INT | Optional | SNP subset size for subset-by-subset computations [default=1000] |
 
+> **Note** 
+> SLEMM weights SNPs in terms of their individual contributions to heritability rather than their squared allele substitution effects.
+
 ### Options specific to `--reml`
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
