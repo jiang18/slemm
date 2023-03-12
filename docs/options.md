@@ -65,7 +65,7 @@
 | `--rel_tol` | FLOAT | Optional | Relative tolerance for the Lanczos decomposition [default=5e-4] |
 | `--num_random_vectors` | INT | Optional | Number of random probing vectors [default=30] |
 | `--seed` | INT | Optional | Random seed [default=0] |
-| `--subset_size` | INT | Optional | Number of SNPs in a subset [default=1000] |
+| `--subset_size` | INT | Optional | SNP subset size for subset-by-subset computations [default=1000] |
 
 ### Options specific to `--reml`
 | Option | Argument | Type | Description |
