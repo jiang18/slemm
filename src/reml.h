@@ -18,9 +18,9 @@ void SLDF_REML(
 	float& vg,
 	float& ve,
 	float& llr,
-	const float s2max = .7000,  // maximal heritable VC value
-	const float s2min = .0001,  // minimal heritable VC value
-	const float tol_VC = 1e-4,  // abs. var. component tolerance
+	const float s2max = .7000,  // maximal h2 value
+	const float s2min = .0001,  // minimal h2 value
+	const float tol_VC = 1e-4,  // abs. tolerance for h2 estimation
 	const bool verbose = true,  // verbose output
 	const int p_freq = 5        // print frequency
 );
@@ -45,8 +45,8 @@ void LMC_REML(
 	float& vg,
 	float& ve,
 	std::vector<gstat>& lmm_out,
-	const float s2max = .7000,  // maximal heritable VC value
-	const float s2min = .0001,  // minimal heritable VC value
+	const float s2max = .7000,  // maximal h2 value
+	const float s2min = .0001,  // minimal h2 value
 	const bool verbose = true,  // verbose output
 	const int p_freq = 5        // print frequency
 );
