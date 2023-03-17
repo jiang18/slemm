@@ -435,6 +435,7 @@ MatrixXf L_Solve(
 //## decompositions of Jacobi matrices from Lanczos decompositions ##
 //## of seed Krylov subspaces for probes                           ##
 //###################################################################
+// log det A = tr log A
 
 float SLQ_LDet(
 	const Ref<MatrixXf>& D,     // eigenvalues of Jacobi matrices
@@ -446,7 +447,7 @@ float SLQ_LDet(
 {
 	float soln = ( W.array().square() * (D.array() + sigma).log() ).sum();
 	
-	return(soln*n/n_V);         // estimate of Tr log |A+ sI|
+	return(soln*n/n_V);         // estimate of tr log (A + sI)
 }
 
 //############################# SLDF_REML ##############################
