@@ -234,7 +234,7 @@ MatrixXf matvec(
 
 //######################## L_Seed ##########################
 //## constructs bases for Krylov subspaces:               ##
-//## B, (A+sI)B, (A+sI)²B, ...                            ##
+//## B, (A+sI)B, (A+sI)^2 B, ...                          ##
 //##########################################################
 
 typedef struct {
