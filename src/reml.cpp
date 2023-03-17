@@ -234,7 +234,7 @@ MatrixXf matvec(
 
 //######################## L_Seed ##########################
 //## constructs bases for Krylov subspaces:               ##
-//## B, (A+sI)B, (A+sI)²B, ...                            ##
+//## B, (A+sI)B, (A+sI)Â²B, ...                            ##
 //##########################################################
 
 typedef struct {
@@ -446,7 +446,7 @@ float SLQ_LDet(
 {
 	float soln = ( W.array().square() * (D.array() + sigma).log() ).sum();
 	
-	return(soln*n/n_V);         // estimate of Tr logm (A+ sI)
+	return(soln*n/n_V);         // estimate of Tr log |A+ sI|
 }
 
 //############################# SLDF_REML ##############################
@@ -561,9 +561,9 @@ void SLDF_REML(
 	float& vg,
 	float& ve,
 	float& lrt,
-	const float s2max,          // maximal heritable VC value
-	const float s2min,          // minimal heritable VC value
-	const float tol_VC,         // abs. var. component tolerance
+	const float s2max,          // maximal h2 value
+	const float s2min,          // minimal h2 value
+	const float tol_VC,         // abs. tolerance for h2 estimation
 	const bool verbose,         // verbose output
 	const int p_freq            // print frequency
 )
@@ -742,8 +742,8 @@ void LMC_REML(
 	float& vg,
 	float& ve,
 	std::vector<gstat>& lmm_out,
-	const float s2max,          // maximal heritable VC value
-	const float s2min,          // minimal heritable VC value
+	const float s2max,          // maximal h2 value
+	const float s2min,          // minimal h2 value
 	const bool verbose,         // verbose output
 	const int p_freq            // print frequency
 )
