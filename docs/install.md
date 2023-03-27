@@ -4,7 +4,7 @@ SLEMM consists of one C++ program (`slemm`) and two Python programs (`slemm_gamm
 - The two Python programs are used for GWAS step 2.
 
 ### Binary executables
-- Binary executables are available in the [Releases](https://github.com/jiang18/slemm/releases).
+- Binary executables are available in the [Releases](https://github.com/jiang18/slemm/releases/latest).
 - `slemm` is statically compiled with the Intel Math Kernel Library on CentOS Linux 7.
 - `slemm_gamma` and `slemm_gwa` are statically compiled on CentOS Linux 7.
 > **Note**
@@ -30,5 +30,5 @@ SLEMM consists of one C++ program (`slemm`) and two Python programs (`slemm_gamm
 Windows Subsystem for Linux (WSL) can be used to run SLEMM on a Windows machine.
 1. [Install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
     - Ubuntu will be installed by default, and other Linux distributions are available. 
-2. Run [pre-compiled SLEMM binaries](https://github.com/jiang18/slemm/releases) on a WSL Linux distribution as on a Linux machine.
+2. Run [pre-compiled SLEMM binaries](https://github.com/jiang18/slemm/releases/latest) on a WSL Linux distribution as on a Linux machine.
     - Use the SLEMM binary that is statically compiled on WSL Ubuntu 22 with Intel oneAPI and Eigen 3.3.9.
