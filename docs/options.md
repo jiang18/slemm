@@ -69,6 +69,7 @@
 
 > **Note** 
 > SLEMM weights SNPs in terms of their individual contributions to heritability rather than their squared allele substitution effects.
+
 > **Note** 
 > `--beta_weight_parameters` will overwrite the SNP weights of `--snp_weight_name` if both options are set.
 
