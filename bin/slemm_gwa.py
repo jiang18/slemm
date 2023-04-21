@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # Jan 11, 2022: enabled the use of reliability
 # Jan 13, 2022: corrected genotype centering
 # Jan 26, 2022: reduced block size if it is > # of model SNPs on a chr
@@ -8,7 +10,6 @@
 # Jul 31, 2022: added a header line in output
 # Mar 02, 2023: made --maf/--mac behave like PLINK's
 
-#!/usr/bin/python3
 import pgenlib
 import numpy as np
 from scipy.stats import chi2

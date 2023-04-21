@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # Jan 11, 2022: enabled the use of reliability
 # Jan 13, 2022: corrected genotype centering
 # Mar 10, 2022: renamed SSGP (ssgp) to SLEMM (slemm)
@@ -6,7 +8,6 @@
 # Jul 31, 2022: added a header line in output
 # Mar 02, 2023: made --maf/--mac behave like PLINK's
 
-#!/usr/bin/python3
 import pgenlib
 import numpy as np
 from scipy.stats import chi2
