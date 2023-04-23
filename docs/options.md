@@ -11,7 +11,7 @@
 
 ## Input
 > **Note** 
-> Missing values in any input file should be left blank. Do not use -9, NA, or NaN.
+> Missing values in any input CSV file should be left empty. Do not use space, -9, NA, or NaN.
 
 ### Phenotype file format
 - CSV file with a header line
