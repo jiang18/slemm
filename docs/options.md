@@ -103,7 +103,10 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify i
 | `--prediction` | FLAG | Required | To predict genomic breeding values |
 | `--bfile` | FILE PREFIX | Required | PLINK bed/bim/fam filename prefix |
 | `--snp_estimate_file` | FILE | Required | SNP effect estimate file (e.g., the **\*.reml.snp.csv** file produced by `--reml` or `--lmm`) |
-| `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value  |
+| `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value (GEBV)  |
+
+> **Note** 
+> The estimated SNP effects correspond to A2 alleles in **\*.reml.snp.csv**. GEBV is equal to the sum of SNP effect times A2 allele count acorss all SNPs. If A1 is swapped with A2 for any SNPs in the prediction population's bim file relative to the traning's, the slemm --pred routine will flip the sign of corresponding SNP effects to get correct GEBVs.
 
 ### Options of `slemm_gamma` and `slemm_gwa`
 ```
