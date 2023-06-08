@@ -40,8 +40,8 @@
 | mixed-model associations | `--lmm` |
 | prediction of genomic breeding values | `--pred` |
 
-> **Note**
-
+> **Note** 
+> Missing values in any input CSV file should be left empty. Do not use space, -9, NA, or NaN.
 > Option names may be abbreviated if the abbreviation is unique or is an exact match for some defined option; e.g., `--phenotype` works the same as `--phenotype_file`.
 
 ### Common options of `--reml` and `--lmm`
