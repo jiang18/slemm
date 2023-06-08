@@ -96,8 +96,7 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify i
 | `--num_qf_markers` | INT | Optional | Specify the number of SNPs for computing quadratic-form statistics [default=30] |
 
 ### Options for prediction of genomic breeding values
-> :warning::eyes:
-> This function is similar to `--score` of PLINK.
+This function is similar to `--score` of PLINK.
 
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
