@@ -43,7 +43,6 @@
 > :warning::eyes:
 > Option names may be abbreviated if the abbreviation is unique or is an exact match for some defined option; e.g., `--phenotype` works the same as `--phenotype_file`.
 
-
 ### Common options of `--reml` and `--lmm`
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
@@ -97,7 +96,6 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify i
 
 ### Options for prediction of genomic breeding values
 This function is similar to `--score` of PLINK.
-
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--prediction` | FLAG | Required | To predict genomic breeding values |
