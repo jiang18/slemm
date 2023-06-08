@@ -84,7 +84,7 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify i
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--sig_chisq` | FLOAT | Optional | Specify a chi-square threshold of significance for approximate single-SNP associations [default=1e6] |
-| `--indep_r2` | FLOAT | Optional | Specify an r2 threshold for identifying independent SNPs from significant ones [default=0.5] |
+| `--indep_r2` | FLOAT | Optional | Specify an r2 threshold for identifying independent significant SNPs like `plink --clump-r2` [default=0.5] |
 > :warning::eyes:
 > No SNPs can be fitted as fixed by default, because any SNP's chi-square test statistic should in practice be below the default threshold (1e6).
 
