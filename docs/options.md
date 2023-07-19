@@ -11,7 +11,7 @@
 
 ## Input
 > :warning::eyes:
-> Missing values in any input CSV file should be left empty. Do not use space, -9, NA, or NaN.
+> Missing values in any input CSV file need to be left empty. Do not use space, -9, NA, or NaN.
 
 ### Phenotype file format
 - CSV file with a header line
