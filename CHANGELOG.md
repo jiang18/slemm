@@ -1,5 +1,8 @@
 # Change Log
 
+## Aug 11, 2023 (v0.89.6)
+- Added standard errors for fixed effects in the output file of .blue.csv for --lrt. 
+
 ## Jan 31, 2023 (v0.89.5)
 - Changed over from ctime to chrono for timing. 
 - Fixed a bug that caused a segmentation fault when using the binary executables on recent Linux versions.
@@ -12,7 +15,7 @@
 
 ## Jul 31, 2022
 - Improved the speed of association tests in slemm_gamma and slemm_gwa. 
-- Added a header line in output of slemm_gamma and slemm_gwa.
+- Added a header line in the output of slemm_gamma and slemm_gwa.
 
 ## Jul 02, 2022
 - Improved the setting of --num_random_probes in --reml. 
