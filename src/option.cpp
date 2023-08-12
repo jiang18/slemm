@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	std::cout<<"*******************************************************************"<<std::endl;
 	std::cout<<"* SLEMM by Jicai Jiang"<<std::endl;
 	std::cout<<"* Stochastic-Lanczos-Expedited Mixed Models"<<std::endl;
-	std::cout<<"* Version 0.89.5 (January 31, 2023)"<<std::endl;
+	std::cout<<"* Version 0.89.6 (August 11, 2023)"<<std::endl;
 	std::cout<<"* (C) 2021-present, Jicai Jiang, NC State University"<<std::endl;
 	std::cout<<"*******************************************************************"<<std::endl;
 	
@@ -362,13 +362,14 @@ void option(int option_num, char **option_str) {
 	if(wls_flag) {
 		VectorXf Py(indi_keep_num); Py.setZero();
 		VectorXf snp_blup(marker_keep.size());
-		VectorXf blue(xmat.cols()); // not used by WLS.
+		VectorXf blue(xmat.cols());  // not used by --wls
+		MatrixXf var_blue(0, 0);     // not used by --wls
 		float vg=0, ve=0, llr=0;
 		
 		weighted_least_squares(rvec, kmat, xmat, yvec, subset_size, snp_blup);
 		
 		write_reml_into_files(output_file, covar_names, indi_keep, rvec, xmat, marker2maf, marker2hwep, marker2pos, marker2alleles, group_ncols, group_keep, marker_keep,
-		  Py, snp_blup, blue, vg, ve, llr);
+		  Py, snp_blup, blue, var_blue, vg, ve, llr);
 		
 		return;
 	}
@@ -385,13 +386,14 @@ void option(int option_num, char **option_str) {
 		VectorXf Py(indi_keep_num);
 		VectorXf snp_blup(marker_keep.size());
 		VectorXf blue(xmat.cols());
+		MatrixXf var_blue(0, 0);     // not used by --lmm
 		float vg, ve, llr=0;
 		std::vector<gstat> lmm_out;
 		LMC_REML(rvec, kmat, xmat, yvec, persnp, subset_size, rng_seed, n_MC, rel_tol, 
 		  lmm_flag, num_qf_markers, fake_geno, window_size, Py, snp_blup, blue, vg, ve, lmm_out, max_h2);
 		
 		write_reml_into_files(output_file, covar_names, indi_keep, rvec, xmat, marker2maf, marker2hwep, marker2pos, marker2alleles, group_ncols, group_keep, marker_keep,
-		  Py, snp_blup, blue, vg, ve, llr);
+		  Py, snp_blup, blue, var_blue, vg, ve, llr);
 		write_gstat_into_files(output_file, indi_keep_num, window_size, vg, marker2maf, marker2hwep, marker2pos, marker_keep, lmm_out);
 		
 		return;
@@ -405,6 +407,7 @@ void option(int option_num, char **option_str) {
 		VectorXf Py(indi_keep_num);
 		VectorXf snp_blup(marker_keep.size());
 		VectorXf blue(xmat.cols());
+		MatrixXf var_blue;
 		float vg, ve, llr=0;
 		
 		// L-FOMC-specific parameters
@@ -422,8 +425,9 @@ void option(int option_num, char **option_str) {
 			std::cout<<"\nSNP weights for heritability: "<<persnp.minCoeff()<<" - "<<persnp.maxCoeff()<<"\n";
 			
 			if(lrt_flag) {
+				var_blue.resize(xmat.cols(), xmat.cols());
 				SLDF_REML(rvec, kmat, xmat, yvec, persnp, subset_size, rng_seed, num_rand_prob, rel_tol, 
-					Py, snp_blup, blue, vg, ve, llr, max_h2);
+					Py, snp_blup, blue, var_blue, vg, ve, llr, max_h2);
 			} else {
 				if(using_nr_opt) n_MC = num_rand_prob;
 				LMC_REML(rvec, kmat, xmat, yvec, persnp, subset_size, rng_seed, n_MC, rel_tol, 
@@ -440,8 +444,9 @@ void option(int option_num, char **option_str) {
 			
 			// --lrt not used during window weighting for large samples (TODO: how large?)
 			if(lrt_flag && indi_keep.size() < 5000) {
+				var_blue.resize(xmat.cols(), xmat.cols());
 				SLDF_REML(rvec, kmat, xmat, yvec, tmp_persnp, subset_size, rng_seed, num_rand_prob, rel_tol, 
-					Py, snp_blup, blue, vg, ve, llr, max_h2);
+					Py, snp_blup, blue, var_blue, vg, ve, llr, max_h2);
 			} else {
 				LMC_REML(rvec, kmat, xmat, yvec, tmp_persnp, subset_size, rng_seed, n_MC, rel_tol, 
 					false, num_qf_markers, fake_geno, window_size, Py, snp_blup, blue, vg, ve, lmm_out, max_h2);
@@ -524,8 +529,9 @@ void option(int option_num, char **option_str) {
 			
 			blue.resize(xmat.cols());
 			if(lrt_flag) {
+				var_blue.resize(xmat.cols(), xmat.cols());
 				SLDF_REML(rvec, kmat, xmat, yvec, persnp, subset_size, rng_seed, num_rand_prob, rel_tol, 
-					Py, snp_blup, blue, vg, ve, llr, max_h2);
+					Py, snp_blup, blue, var_blue, vg, ve, llr, max_h2);
 			} else {
 				if(using_nr_opt) n_MC = num_rand_prob;
 				LMC_REML(rvec, kmat, xmat, yvec, persnp, subset_size, rng_seed, n_MC, rel_tol, 
@@ -538,8 +544,9 @@ void option(int option_num, char **option_str) {
 		
 		xmat.conservativeResize(NoChange, covar_names.size());
 		blue.conservativeResize(covar_names.size());
+		if(lrt_flag) var_blue.conservativeResize(covar_names.size(), covar_names.size());
 		write_reml_into_files(output_file, covar_names, indi_keep, rvec, xmat, marker2maf, marker2hwep, marker2pos, marker2alleles, group_ncols, group_keep, marker_keep,
-		  Py, snp_blup, blue, vg, ve, llr);
+		  Py, snp_blup, blue, var_blue, vg, ve, llr);
 		
 		return;
 	}

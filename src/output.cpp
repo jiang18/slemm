@@ -17,6 +17,7 @@ void write_reml_into_files(
 	const Ref<VectorXf> Py,
 	const Ref<VectorXf> snp_blup,
 	const Ref<VectorXf> blue,
+	const Ref<MatrixXf> var_blue,
 	const float& vg,
 	const float& ve,
 	const float& lrt) 
@@ -53,9 +54,20 @@ void write_reml_into_files(
 	
 	// blue of fixed effects
 	ofs.open(output_file_prefix + ".reml.blue.csv");
-	ofs<<"covar,blue\n";
-	for(i=0; i<covar_names.size(); ++i) 
-		ofs<<covar_names[i]<<','<<blue(i)<<"\n";
+	if(lrt == 0) {
+		ofs<<"covar,blue\n";
+		for(i=0; i<covar_names.size(); ++i) 
+			ofs<<covar_names[i]<<','<<blue(i)<<"\n";
+	} else {
+		ofs<<"covar,blue,se,pval";
+		for(i=0; i<covar_names.size(); ++i) ofs<<','<<covar_names[i];
+		ofs<<"\n";
+		for(i=0; i<covar_names.size(); ++i) {
+			ofs<<covar_names[i]<<','<<blue(i)<<','<<sqrt(var_blue(i,i))<<','<<getOneDfChisqPval(blue(i)*blue(i)/var_blue(i,i));
+			for(j=0; j<covar_names.size(); ++j) ofs<<','<<var_blue(i,j);
+			ofs<<"\n";
+		}
+	}
 	ofs.close();
 	
 	// variance component estimates

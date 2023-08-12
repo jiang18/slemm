@@ -15,6 +15,7 @@ void SLDF_REML(
 	Ref<VectorXf> Py,
 	Ref<VectorXf> snp_blup,
 	Ref<VectorXf> blue,
+	Ref<MatrixXf> var_blue,
 	float& vg,
 	float& ve,
 	float& llr,

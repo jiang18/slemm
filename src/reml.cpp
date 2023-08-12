@@ -559,6 +559,7 @@ void SLDF_REML(
 	Ref<VectorXf> Py,
 	Ref<VectorXf> snp_blup,
 	Ref<VectorXf> blue,
+	Ref<MatrixXf> var_blue,
 	float& vg,
 	float& ve,
 	float& lrt,
@@ -582,16 +583,17 @@ void SLDF_REML(
 	MatrixXf Q = r_rsqrt.asDiagonal() * X;
 	ColPivHouseholderQR<MatrixXf> qr(Q);
 	Q = qr.householderQ() * MatrixXf::Identity(n, qr.rank());
-	MatrixXf qrR = qr.matrixR().topLeftCorner(qr.rank(), qr.rank()).template triangularView<Upper>();
 	if(Q.cols() != X.cols()) throw("\nFixed-effects design matrix is not of full rank.\n");
+	MatrixXf qrR = qr.matrixR().topLeftCorner(qr.rank(), qr.rank()).template triangularView<Upper>();
+	qrR = qrR * qr.colsPermutation().transpose();
 	
 	// apply projection to phenotype vector
 	VectorXf y_proj = r_rsqrt.cwiseProduct(y);
 	y_proj = y_proj - Q * (Q.transpose() * y_proj);
 	std::cout<<"Projected covariates out of phenotypes."<<std::endl;
 
-	// sample normalized Rademacher probing vetors
-	std::cout<<"Generating "<<n_V<<" Rademacher probing vetors."<<std::endl;
+	// sample normalized Rademacher probing vectors
+	std::cout<<"Generating "<<n_V<<" Rademacher probing vectors."<<std::endl;
 	MatrixXf V = MatrixXf::Ones(n, n_V);
 	std::mt19937 rng(rng_seed+54321);
 	std::uniform_real_distribution<float> runif(0.0, 1.0);
@@ -652,9 +654,6 @@ void SLDF_REML(
 	// free memory
 	W_V.resize(0,0);
 	D_V.resize(0,0);
-	seed_Q.U.clear();
-	seed_Q.beta.resize(0,0);
-	seed_Q.delta.resize(0,0);
 	
 	float tau1 = ve/vg;
 	Py = L_Solve(seed_y, y_proj, tau1-tau0).col(0);
@@ -666,16 +665,21 @@ void SLDF_REML(
 	std::cout<<"h2,"<<vg/(vg+ve)<<std::endl;
 	std::cout<<"LRT,"<<lrt<<std::endl;
 	
-	// compute blue of fixed effects
-	y_proj = matvec(tmp_mat1, tmp_mat2, Z, gm, snp_blup);
-	y_proj += tau1 * rvec.cwiseProduct(Py);
-	y_proj = y - y_proj;
-	blue = (X.transpose() * X).llt().solve(X.transpose() * y_proj);
-	
 	// free memory
 	y_proj.resize(0);
 	tmp_mat1.resize(0,0);
 	tmp_mat2.resize(0,0);
+	
+	// compute blue of fixed effects
+	MatrixXf HinvX = r_rsqrt.asDiagonal() * L_Solve(seed_Q, Q, tau1-tau0) * qrR;
+	MatrixXf XtHinvX = X.transpose() * HinvX;
+	blue = XtHinvX.llt().solve(HinvX.transpose() * y);
+	var_blue = XtHinvX.inverse() * vg;    // scaled by a factor of (1.0+1.0/n_V)?
+	
+	// free memory
+	seed_Q.U.clear();
+	seed_Q.beta.resize(0,0);
+	seed_Q.delta.resize(0,0);
 	
 	std::cout<<"\nCompleted stochastic Lanczos DF-REML."<<std::endl;
 	

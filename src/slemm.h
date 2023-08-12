@@ -105,6 +105,7 @@ void write_reml_into_files(
 	const Ref<VectorXf> Py,
 	const Ref<VectorXf> snp_blup,
 	const Ref<VectorXf> blue,
+	const Ref<MatrixXf> var_blue,
 	const float& vg,
 	const float& ve,
 	const float& lrt );
