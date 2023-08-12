@@ -78,7 +78,7 @@
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
 | `--reml` | FLAG | Required | To run GREML |
-| `--lrt` | FLAG | Optional | Flag to perform likelihood-ratio test |
+| `--lrt` | FLAG | Optional | Flag to perform a likelihood-ratio test and to produce standard errors for fixed effects |
 | `--iter_weighting` | FLAG | Optional | Flag to run iterative SNP weighting |
 
 When `--iter_weighting` is set, SLEMM has two more options to quickly identify independent significant SNPs to be fitted as fixed effects.
