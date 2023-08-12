@@ -7,7 +7,7 @@ SLEMM consists of one C++ program (`slemm`) and two Python programs (`slemm_gamm
 - Binary executables are available in the [Releases](https://github.com/jiang18/slemm/releases/latest).
 - `*-x86_64-linux.zip` contains three standalone executables: `slemm`, `slemm_gamma`, and `slemm_gwa`.
 - `slemm` is statically compiled with [Intel oneAPI Base & HPC Toolkit 2023.1](https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html) and Eigen 3.3.9 on Ubuntu 22.
-- `slemm_gamma` and `slemm_gwa` are compiled on CentOS Linux 7.
+- `slemm_gamma` and `slemm_gwa` are statically compiled on CentOS Linux 7.
 
 > **Note**
 > `slemm` should be executable. Type `chmod +x slemm*` on the command line if needed.
