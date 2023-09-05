@@ -143,6 +143,7 @@ void computeTotalGeneticValuePLINK(
 	}
 	std::vector<double> alpha;
 	std::vector<bool> bmarker;
+	std::vector<bool> bflip;
 	std::string str_buf;
 	std::string snp_buf;
 	std::string a1_buf;
@@ -157,9 +158,9 @@ void computeTotalGeneticValuePLINK(
 		ifs>>str_buf;  // allele 2
 		
 		if(marker2eff.find(snp_buf) != marker2eff.end()) {
-			double this_effect = marker2eff[snp_buf];
-			if(a1_buf != marker2allele[snp_buf]) this_effect *= -1;
-			alpha.push_back(this_effect);
+			if(a1_buf != marker2allele[snp_buf]) bflip.push_back(true);
+			else bflip.push_back(false);
+			alpha.push_back( marker2eff[snp_buf] );
 			bmarker.push_back(true);
 		} else {
 			alpha.push_back(0.0);
@@ -183,7 +184,7 @@ void computeTotalGeneticValuePLINK(
 	ifs.open(binary_genotype_file, std::ifstream::binary);
 	std::cout<<"Reading PLINK BED file from ["+binary_genotype_file+"] in SNP-major format..."<<std::endl;
 	// g = Z * alpha
-	Matrix<int8_t, Dynamic, 1> zvec(indi_num);
+	VectorXi zvec(indi_num);
 	VectorXd tgv;
 	tgv.setZero(indi_num);
 
@@ -210,6 +211,7 @@ void computeTotalGeneticValuePLINK(
 				i++;
 		   }
 		}
+		if(bflip[j]) zvec = 2 - zvec.array();
 		tgv += zvec.cast<double>() * alpha[j];
 		if(j==last_true_snp) break;
 	}
@@ -218,8 +220,9 @@ void computeTotalGeneticValuePLINK(
 	
 	std::ofstream ofs;
 	ofs.open(output_file);
+	ofs<<"IID,GEBV\n";
 	for(i=0; i<indi_num; ++i)
-		ofs<<indi[i]<<','<<tgv[i]<<std::endl;
+		ofs<<indi[i]<<','<<tgv[i]<<"\n";
 	ifs.close();
 	
 }

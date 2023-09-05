@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	std::cout<<"*******************************************************************"<<std::endl;
 	std::cout<<"* SLEMM by Jicai Jiang"<<std::endl;
 	std::cout<<"* Stochastic-Lanczos-Expedited Mixed Models"<<std::endl;
-	std::cout<<"* Version 0.89.6 (August 11, 2023)"<<std::endl;
+	std::cout<<"* Version 0.89.7 (September 5, 2023)"<<std::endl;
 	std::cout<<"* (C) 2021-present, Jicai Jiang, NC State University"<<std::endl;
 	std::cout<<"*******************************************************************"<<std::endl;
 	
