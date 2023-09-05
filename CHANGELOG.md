@@ -1,7 +1,7 @@
 # Change Log
 
 ## Sep 05, 2023 (v0.89.7)
-- Revised --pred to unify the GEBV calculation.
+- Modified --pred to unify the GEBV calculation.
 
 ## Aug 11, 2023 (v0.89.6)
 - Added standard errors for fixed effects in the output file of .blue.csv for --lrt. 
