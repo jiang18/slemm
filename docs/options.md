@@ -105,7 +105,7 @@ This function is similar to `--score` of PLINK.
 | `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value (GEBV)  |
 
 > **Note**
-> The estimated SNP effects correspond to A2 alleles in **\*.reml.snp.csv**. GEBV is equal to the sum of SNP effect times A2 allele count across all SNPs. If A1 is swapped with A2 for any SNPs in the prediction population's bim file relative to the training's, the `slemm --pred` routine will flip the sign of corresponding SNP effects to get correct GEBVs.
+> The estimated SNP effects correspond to A2 alleles in **\*.reml.snp.csv**. GEBV is equal to the sum of SNP effect times A2 allele count across all SNPs. The `slemm --pred` routine can recognize if A1 is swapped with A2 for any SNPs in the prediction population's bim file relative to the training's.
 
 ### Options of `slemm_gamma` and `slemm_gwa`
 ```
