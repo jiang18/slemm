@@ -52,7 +52,7 @@
 | `--error_weight_name` | STRING | Optional | Must be a column header in the phenotype file and specify which column contains individual error variance weights |
 | `--bfile` | FILE PREFIX | Required | PLINK bed/bim/fam filename prefix |
 | `--snp_info_file` | FILE | Required | SNP info file |
-| `--snp_weight_name` |  STRING | Optional | Must correspond to a column header in the SNP info file and specify which column contains the weights for individual SNPs' contributions to heritability |
+| `--snp_weight_name` |  STRING | Optional | Must be a column header in the SNP info file and specify which column contains the weights for individual SNPs' contributions to heritability |
 | `--beta_weight_parameters` | STRING | Optional | Specify $\alpha$ and $\beta$ as in $f(x;\alpha,\beta)=\text{const}\cdot x^{(\alpha-1)}(1-x)^{(\beta-1)}$ ([beta distribution](https://en.wikipedia.org/wiki/Beta_distribution)) to use $f(\text{MAF};\alpha,\beta)$ as the weights for individual SNPs' contributions to heritability [default is `1,1`] |
 | `--covariate_file` | FILE | Optional | Covariate file |
 | `--covariate_names` | STRING | Optional | Comma-separated list of covariates to include in the analysis |
