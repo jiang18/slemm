@@ -60,7 +60,7 @@
 | `--max_heritability` | FLOAT | Optional | Specify a sufficiently large value $h^2_{max}$ so that the search for heritability falls in (1e-4, $h^2_{max}$) [default=0.7] |
 | `--num_threads` | INT | Optional | Number of computational threads to use [default=1] |
 | `--window_size` | INT | Optional | Number of SNPs in a window for `--iter_weighting` [default=20] and `--lmm` [default=1000] |
-| `--min_maf` | FLOAT | Optional | Filter out SNPs with an MAF below or equal to the provided threshold [default=0] |
+| `--min_maf` | FLOAT | Optional | Filter out SNPs with an MAF less than or equal to the provided threshold [default=0] |
 | `--min_hwe_pval` | FLOAT | Optional | Filter out SNPs with Hardy-Weinberg equilibrium exact test p-value below the provided threshold [default=0] |
 | `--hwe_midp` | FLAG | Optional | Specify the mid-p adjustment in Hardy-Weinberg equilibrium exact tests |
 | `--rel_tol` | FLOAT | Optional | Relative tolerance for the Lanczos decomposition [default=5e-4] |
