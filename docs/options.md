@@ -114,7 +114,7 @@ python3 slemm_gwa.py --help
 ```
 - `slemm_gamma.py` and `slemm_gwa.py` use the option `--slemm` to take the output of `slemm --lmm`. 
 - `slemm_gamma.py` computes GRAMMAR-Gamma association statistics for each SNP.
-- `slemm_gwa.py` computes single-SNP association statistics closely approximating EMMAX or GCTA. 
+- `slemm_gwa.py` computes single-SNP association statistics that closely approximate those obtained from EMMAX or GCTA-MLMA. 
 
 ## Setting options for genomic predictions
 - `--reml` is required.
