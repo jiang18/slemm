@@ -112,6 +112,9 @@ This function is similar to `--score` of PLINK.
 python3 slemm_gamma.py --help 
 python3 slemm_gwa.py --help
 ```
+- `slemm_gamma.py` and `slemm_gwa.py` use the option `--slemm` to take the output of `slemm --lmm`. 
+- `slemm_gamma.py` computes GRAMMAR-Gamma association statistics for each SNP.
+- `slemm_gwa.py` computes single-SNP association statistics closely approximating EMMAX or GCTA. 
 
 ## Setting options for genomic predictions
 - `--reml` is required.
