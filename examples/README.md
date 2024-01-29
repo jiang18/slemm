@@ -50,7 +50,7 @@ OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.t
 - `slemm_gamma.py` and `slemm_gwa.py` use the option `--slemm` to take the output of `slemm --lmm`. 
 - `slemm_gamma.py` computes GRAMMAR-Gamma association statistics for each SNP.
 - `slemm_gwa.py` computes single-SNP association statistics that closely approximate those obtained from EMMAX or GCTA-MLMA. 
-> **Note**
+> [!NOTE]
 > Association tests with `slemm_gwa` should be done for each chromosome separately. 
 ```bash
 export OMP_NUM_THREADS=10

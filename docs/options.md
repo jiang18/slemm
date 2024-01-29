@@ -10,7 +10,7 @@
 - [Setting options for GWAS](#setting-options-for-gwas)
 
 ## Input
-> **Note**
+> [!NOTE]
 > Missing values in any input CSV file need to be left empty. Do not use space, -9, NA, or NaN.
 
 ### Phenotype file format
@@ -41,7 +41,7 @@
 | mixed-model associations | `--lmm` |
 | prediction of genomic breeding values | `--pred` |
 
-> **Note**
+> [!NOTE]
 > Option names may be abbreviated if the abbreviation is unique or is an exact match for some defined option; e.g., `--phenotype` works the same as `--phenotype_file`.
 
 ### Common options of `--reml` and `--lmm`
@@ -68,10 +68,10 @@
 | `--seed` | INT | Optional | Random seed [default=0] |
 | `--subset_size` | INT | Optional | SNP subset size for subset-by-subset computations [default=1000] |
 
-> **Note**
+> [!NOTE]
 > SLEMM weights SNPs in terms of their individual contributions to heritability rather than their squared allele substitution effects.
 
-> **Note**
+> [!NOTE]
 > `--beta_weight_parameters` will overwrite the SNP weights of `--snp_weight_name` if both options are set.
 
 ### Options specific to `--reml`
@@ -86,7 +86,7 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify i
 |-------|-------|-------|--------------|
 | `--sig_chisq` | FLOAT | Optional | Specify a chi-square threshold of significance for approximate single-SNP associations [default=1e6] |
 | `--indep_r2` | FLOAT | Optional | Specify an r2 threshold for identifying independent significant SNPs like `plink --clump-r2` [default=0.5] |
-> **Note**
+> [!NOTE]
 > No SNPs can be fitted as fixed by default, because any SNP's chi-square test statistic should in practice be below the default threshold (1e6).
 
 ### Options specific to `--lmm`
@@ -104,7 +104,7 @@ This function is similar to `--score` of PLINK.
 | `--snp_estimate_file` | FILE | Required | SNP effect estimate file (e.g., the **\*.reml.snp.csv** file produced by `--reml` or `--lmm`) |
 | `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value (GEBV)  |
 
-> **Note**
+> [!NOTE]
 > The estimated SNP effects correspond to A2 alleles in **\*.reml.snp.csv**. GEBV is equal to the sum of SNP effect times A2 allele count across all SNPs. The `slemm --pred` routine can recognize if A1 is swapped with A2 for any SNPs in the prediction population's bim file relative to the training's.
 
 ### Options of `slemm_gamma` and `slemm_gwa`
@@ -128,5 +128,5 @@ python3 slemm_gwa.py --help
 - `--num_threads` should be proporly set on a multi-core computer to speed up computations.
 - `--max_heritability` should be set **slightly larger** than the actual (pseudo-)heritability; e.g., `--max_herit 0.4` can be used for dairy milk yield traits because we know they are moderately heritable. A large value works but results in unnecessary computation. Its default value (0.7) is **unnecessarily** large for most traits.
 - `--window_size` affects the computation of mixed-model associations in `slemm_gwa`. The larger `--window_size`, the more accurate approximation of mixed-model associations but the more intensive computations. Its default value generally works well for livestock data.
-> **Note**
+> [!NOTE]
 > The behavior of `--window_size` in `--reml` differs from that in `--lmm`.
