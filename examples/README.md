@@ -49,7 +49,7 @@ OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.t
 - `slemm --lmm` fits linear mixed model for genome-wide associations.
 - `slemm_gamma.py` and `slemm_gwa.py` use the option `--slemm` to take the output of `slemm --lmm`. 
 - `slemm_gamma.py` computes GRAMMAR-Gamma association statistics for each SNP.
-- `slemm_gwa.py` computes single-SNP association statistics closely approximating EMMAX. 
+- `slemm_gwa.py` computes single-SNP association statistics closely approximating EMMAX or GCTA. 
 > **Note**
 > Association tests with `slemm_gwa` should be done for each chromosome separately. 
 ```bash
