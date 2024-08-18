@@ -1,94 +1,6 @@
 #include <bitset>
 #include "slemm.h"
 
-void computeTotalGeneticValueSSGP(
-	const std::string marker_estimate_file,
-	const std::string binary_genotype_file_prefix,
-	const std::string output_file)
-{
-	std::ifstream ifs;
-	std::string line;
-	unsigned i=0;
-	// marker effects
-	ifs.open(marker_estimate_file);
-	if(!ifs.is_open()) {
-		std::cout<<"Cannot open "<<marker_estimate_file<<std::endl;
-		exit(1);
-	}
-	std::cout<<"Reading SNP ESTIMATE file from ["+marker_estimate_file+"]."<<std::endl;
-	std::getline(ifs, line);
-	std::map<std::string, double> marker2eff;
-	std::map<std::string, std::string> marker2allele;
-	while (std::getline(ifs, line)) {
-		std::vector<std::string> cols = StrFunc::split(line, ',');
-		if(cols.size() < 10 || cols[0].empty() || cols[9].empty()) continue;
-		marker2eff[cols[0]] = std::stod(cols[9]);
-		marker2allele[cols[0]] = cols[3];
-	}
-	ifs.close();
-	// read individual list file
-	std::string indi_file = binary_genotype_file_prefix + ".indi";
-	ifs.open(indi_file);
-	if(!ifs.is_open()) {
-		std::cout<<"Cannot open "<<indi_file<<std::endl;
-		exit(1);
-	}
-	std::cout<<"Reading SSGP INDI file from ["+indi_file+"]."<<std::endl;
-	std::vector<std::string> indi;
-	while (std::getline(ifs, line)) indi.push_back(line);
-	ifs.close();
-	// read marker list file
-	std::string marker_file = binary_genotype_file_prefix + ".mrk";
-	ifs.open(marker_file);
-	if(!ifs.is_open()) {
-		std::cout<<"Cannot open "<<marker_file<<std::endl;
-		exit(1);
-	}
-	std::cout<<"Reading SSGP MRK file from ["+marker_file+"]."<<std::endl;
-	std::vector<std::string> marker;
-	std::vector<std::string> allele;
-	while (std::getline(ifs, line)) {
-		std::vector<std::string> cols = StrFunc::split(line, ',');
-		if(cols.size() < 5) throw("\nError: not enough columns in MRK file.\n");
-		marker.push_back(cols[0]);
-		allele.push_back(cols[3]);
-	}
-	ifs.close();
-	//read binary genotype file
-	std::string binary_genotype_file = binary_genotype_file_prefix + ".bin";
-	ifs.open(binary_genotype_file, std::ifstream::binary);
-	std::cout<<"Reading SSGP BIN file from ["+binary_genotype_file+"]."<<std::endl;
-	unsigned data_n,data_m;
-	ifs.read((char*)(&data_n),sizeof(unsigned));
-	ifs.read((char*)(&data_m),sizeof(unsigned));
-	//to check data_n == indi_num or data_m != marker_num
-	if(data_n != indi.size() || data_m != marker.size()) {
-		std::cout<<"# of individuals in .indi != that in .bin or # of markers in .mrk != that in .bin"<<std::endl;
-		std::cout<<"Has one (or more) of the three files been modified?"<<std::endl;
-		exit(1);
-	}
-	// g = Z * alpha
-	VectorXd alpha(marker.size());
-	for(i=0; i<marker.size(); ++i) {
-		if(marker2eff.find(marker[i]) != marker2eff.end()) {
-			if(allele[i] == marker2allele[marker[i]]) alpha[i] = marker2eff[marker[i]];
-			else alpha[i] = -marker2eff[marker[i]];
-		
-		} else alpha[i] = 0;
-	}
-	std::ofstream ofs;
-	ofs.open(output_file);
-	Matrix<int8_t, Dynamic, 1> indi_geno(data_m);
-	for(i=0; i<data_n; ++i)
-	{
-		ifs.read((char*)indi_geno.data(), data_m*sizeof(signed char));
-		double tgv = indi_geno.cast<double>().dot(alpha);
-		ofs<<indi[i]<<','<<tgv<<std::endl;
-	}
-	ifs.close();
-	
-}
-
 void computeTotalGeneticValuePLINK(
 	const std::string marker_estimate_file,
 	const std::string binary_genotype_file_prefix,
@@ -153,8 +65,8 @@ void computeTotalGeneticValuePLINK(
 		if(ifs.eof()) break;
 		ifs>>snp_buf;  // variant name
 		ifs>>str_buf;  // genetic dist
-		ifs>>str_buf;     // bp position
-		ifs>>a1_buf;  // allele 1
+		ifs>>str_buf;  // bp position
+		ifs>>a1_buf;   // allele 1
 		ifs>>str_buf;  // allele 2
 		
 		if(marker2eff.find(snp_buf) != marker2eff.end()) {
@@ -163,6 +75,7 @@ void computeTotalGeneticValuePLINK(
 			alpha.push_back( marker2eff[snp_buf] );
 			bmarker.push_back(true);
 		} else {
+			bflip.push_back(false);
 			alpha.push_back(0.0);
 			bmarker.push_back(false);
 		}
