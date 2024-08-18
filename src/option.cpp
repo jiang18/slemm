@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	std::cout<<"*******************************************************************"<<std::endl;
 	std::cout<<"* SLEMM by Jicai Jiang"<<std::endl;
 	std::cout<<"* Stochastic-Lanczos-Expedited Mixed Models"<<std::endl;
-	std::cout<<"* Version 0.89.7 (September 5, 2023)"<<std::endl;
+	std::cout<<"* Version 0.90.1 (August 18, 2024)"<<std::endl;
 	std::cout<<"* (C) 2021-present, Jicai Jiang, NC State University"<<std::endl;
 	std::cout<<"*******************************************************************"<<std::endl;
 	
@@ -507,6 +507,8 @@ void option(int option_num, char **option_str) {
 				else if(i> persnp.size() - window_size/2 -1) tmp_persnp(i) = snpvar.tail(window_size+1).mean(); 
 				else tmp_persnp(i) = snpvar.segment(i - window_size/2, window_size+1).mean();
 			}
+			// Added August 15, 2024
+			tmp_persnp = 0.001 / (0.001 + 0.999 * (tmp_persnp * (-0.5)).array().exp());
 			
 			std::cout<<"Computed window-based SNP weights.\n";
 			std::cout<<"\n==========================================================\n";
