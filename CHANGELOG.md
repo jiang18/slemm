@@ -1,5 +1,9 @@
 # Change Log
 
+## Aug 18, 2024 (v0.90.1)
+- Enhanced the iterative weighting scheme. For details, see [the benchmarking results](https://github.com/jiang18/gwablup_vs_slemm).
+- Resolved an issue in the --pred functionality present in version 0.89.7. 
+
 ## Sep 05, 2023 (v0.89.7)
 - Modified --pred to unify the GEBV calculation.
 
