@@ -35,10 +35,10 @@ OMP_NUM_THREADS=10 slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr1.t
 > Association tests with `slemm_gwa` should be done for each chromosome separately. 
 ```bash
 export OMP_NUM_THREADS=10
-for i in `seq 1 30`; do slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr$i.txt --chr $i; done
+for i in `seq 1 20`; do slemm_gwa.py --pfile ../data/10k --slemm 10k --out 10k.chr$i.txt --chr $i; done
 
 mv 10k.chr1.txt 10k.chrAll.txt
-for i in `seq 2 30`; do tail -n +2 10k.chr$i.txt >> 10k.chrAll.txt; rm 10k.chr$i.txt; done
+for i in `seq 2 20`; do tail -n +2 10k.chr$i.txt >> 10k.chrAll.txt; rm 10k.chr$i.txt; done
 ```
 
 # [BOLT](https://alkesgroup.broadinstitute.org/BOLT-LMM/BOLT-LMM_manual.html)
