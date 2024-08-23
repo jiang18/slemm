@@ -1,32 +1,13 @@
-# Simulation
-## Simulate genotypes with [genosim](https://aipl.arsusda.gov/software/genosim/)
-```console
-cd data
-perl ../scripts/sim_ped.pl 10000
-markersim
-genosim
-```
-- Enter the data folder.
-- The Perl script generates pedigree.file and genotype.data0 for 10k unrelated individuals. 
-- Run `genosim`.
-## Convert genosim output files to PLINK files
-```console
-perl ../scripts/aipl2plink.pl 10k
-plink --file 10k --make-bed --out 10k --chr-set 30
-```
-## Simulate phenotypes based on genotypes
-```console
-perl ../scripts/sim_snp_effects.pl 1.snp.csv
-slemm --pred --bfile 10k --snp_estimate 1.snp.csv --output 10k.gv.csv
-Rscript --no-save ../scripts/sim_phe.R 10k 0.3
-```
-- The Perl script simulates SNP effects.
-- `slemm` computes total genetic values.
-- The R script simulates phenotypes with a heritability of 0.3.
+# Data
+A test dataset is available in the **data** folder. 
+- **PLINK files**: Genotypes are simulated using [genosim](https://aipl.arsusda.gov/software/genosim/).
+- **QTL effects** (true_effects.csv): Effects are simulated by sampling from the standard normal distribution.
+- **Phenotype files** (.slemm.csv and .bolt.csv): Phenotypes are simulated by summing QTL effects and normal errors, with a heritability of 0.3.
+
 # SLEMM
 ## SNP info file
 ```console
-cd ..
+# Ensure the "data" folder is in your current working directory.
 mkdir slemm
 cd slemm
 perl -e 'print "SNP\n"; while(<>) {@c=split /\s+/; print "$c[1]\n"}' < ../data/10k.bim > snp_info.csv
@@ -62,7 +43,7 @@ for i in `seq 2 30`; do tail -n +2 10k.chr$i.txt >> 10k.chrAll.txt; rm 10k.chr$i
 
 # [BOLT](https://alkesgroup.broadinstitute.org/BOLT-LMM/BOLT-LMM_manual.html)
 ```console
-cd ..
+# Ensure the "data" folder is in your current working directory.
 mkdir bolt
 cd bolt
 ~/software/BOLT-LMM_v2.3.4/bolt \
@@ -74,7 +55,7 @@ cd bolt
 
 # [PLINK](https://www.cog-genomics.org/plink/1.9/)
 ```console
-cd ..
+# Ensure the "data" folder is in your current working directory.
 mkdir plink
 cd plink
 plink --r2 --bfile ../data/10k --chr-set 30 --out 10k --ld-window-r2 0 --ld-window 500 --ld-window-kb 10000
