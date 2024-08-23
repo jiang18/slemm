@@ -21,7 +21,7 @@
 ### Genotype file format
 - PLINK bed/bim/fam files
 - Required
-- Missing genotypes need to be fully filled. Refer to [filling_bed.R](../examples/scripts/filling_bed.R) for a quick how-to.  
+- Missing genotypes need to be fully filled. Refer to [filling_bed.R](../scripts/filling_bed.R) for a quick how-to.  
 - Family IDs are not used.
 ### SNP info file format
 - CSV file with a header line
