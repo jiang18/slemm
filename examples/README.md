@@ -61,6 +61,5 @@ cd bolt
 # Ensure the "data" folder is in your current working directory.
 mkdir plink
 cd plink
-plink --r2 --bfile ../data/10k --chr-set 30 --out 10k --ld-window-r2 0 --ld-window 500 --ld-window-kb 10000
 plink --assoc --bfile ../data/10k --allow-no-sex --chr-set 30 --pheno ../data/10k.bolt.txt --pheno-name QT --out 10k
 ```
