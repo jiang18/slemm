@@ -1,6 +1,6 @@
 # Data
 A test dataset is available in the **data** folder. 
-- **PLINK files**: Genotypes are simulated using [genosim](https://aipl.arsusda.gov/software/genosim/).
+- **PLINK files**: Genotypes are simulated using [genosim](https://www.ars.usda.gov/northeast-area/beltsville-md-barc/beltsville-agricultural-research-center/agil/aip/software/genosim/).
 - **QTL effects** (true_effects.csv): Effects are simulated by sampling from the standard normal distribution.
 - **Phenotype files** (.slemm.csv and .bolt.csv): Phenotypes are simulated by summing QTL effects and normal errors, with a heritability of 0.3.
 
