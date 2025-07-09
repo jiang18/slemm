@@ -29,7 +29,7 @@ slemm --reml --iter_weighting --window_size 20 --phenotype_file ../data/10k.slem
 slemm --pred --bfile ../data/10k --snp_estimate 10k.reml.snp.csv --out 10k.gebv.csv
 
 # SNP effect estimate file from window-based SNP weighting: 10k.ww.reml.snp.csv
-slemm --pred --bfile ../data/10k --snp_estimate 10k.ww.reml.snp.csv --out 10k.gebv.csv
+slemm --pred --bfile ../data/10k --snp_estimate 10k.ww.reml.snp.csv --out 10k.ww.gebv.csv
 ```
 ## LMM and GWA
 ```console
