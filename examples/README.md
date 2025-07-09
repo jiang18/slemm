@@ -19,9 +19,17 @@ perl -e 'print "SNP\n"; while(<>) {@c=split /\s+/; print "$c[1]\n"}' < ../data/1
 ```console
 slemm --reml --phenotype_file ../data/10k.slemm.csv --bfile ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
 ```
+## Window-based SNP weighting
+```console
+slemm --reml --iter_weighting --window_size 20 --phenotype_file ../data/10k.slemm.csv --bfile ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k.ww --num_threads 10
+```
 ## Prediction of genomic breeding values
 ```console
+# SNP effect estimate file from REML: 10k.reml.snp.csv
 slemm --pred --bfile ../data/10k --snp_estimate 10k.reml.snp.csv --out 10k.gebv.csv
+
+# SNP effect estimate file from window-based SNP weighting: 10k.ww.reml.snp.csv
+slemm --pred --bfile ../data/10k --snp_estimate 10k.ww.reml.snp.csv --out 10k.gebv.csv
 ```
 ## LMM and GWA
 ```console
