@@ -48,6 +48,10 @@ OMP_NUM_THREADS=10 slemm_gwa --pfile ../data/10k --slemm 10k --out 10k.chr1.txt 
 - `slemm_gamma` computes GRAMMAR-Gamma association statistics for individual SNPs.
 - `slemm_gwa` computes single-SNP association statistics that closely approximate those from EMMAX or GCTA-MLMA. 
 
+> [!WARNING]
+> The genotype files (either bed/bim/fam or pgen/pvar/psam) taken by `slemm_gwa`'s `--pfile` option must contain all the null-model SNPs on the specified chromosome;
+> otherwise, an error will occur. Null-model SNPs are shown in `slemm --lmm`'s `.reml.snp.csv` output file.
+
 > [!NOTE]
 > Association tests with `slemm_gwa` should be done for each chromosome separately.
 > The example below shows how to run tests for chromosomes 1-20 and combine results:
