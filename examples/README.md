@@ -37,13 +37,15 @@ slemm --pred --bfile ../data/10k --snp_estimate 10k.ww.reml.snp.csv --out 10k.ww
 ```
 ## LMM and GWA
 ```console
+# Step 1
 slemm --lmm --phenotype_file ../data/10k.slemm.csv --bfile ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
+# Step 2
 OMP_NUM_THREADS=1 slemm_gamma --pfile ../data/10k --slemm 10k --out 10k.gamma.txt
 OMP_NUM_THREADS=10 slemm_gwa --pfile ../data/10k --slemm 10k --out 10k.chr1.txt --chr 1
 ```
 - `slemm --lmm` fits linear mixed model for genome-wide associations.
-- `slemm_gamma` and `slemm_gwa` use the option `--slemm` to take the output of `slemm --lmm`. 
-- `slemm_gamma` computes GRAMMAR-Gamma association statistics for each SNP.
+- `slemm_gamma` and `slemm_gwa` use the `--slemm` option to read the output from `slemm --lmm`. 
+- `slemm_gamma` computes GRAMMAR-Gamma association statistics for individual SNPs.
 - `slemm_gwa` computes single-SNP association statistics that closely approximate those obtained from EMMAX or GCTA-MLMA. 
 
 > [!NOTE]
