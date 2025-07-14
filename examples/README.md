@@ -14,7 +14,7 @@ mkdir slemm
 cd slemm
 perl -e 'print "SNP\n"; while(<>) {@c=split /\s+/; print "$c[1]\n"}' < ../data/10k.bim > snp_info.csv
 ```
-- The SNP info file is a CSV file with a header line and specifies what SNPs to be included in SLEMM.
+- The SNP info file is a CSV file with a header line, specifying which SNPs to be included in the random-effects term (or genomic relationship matrix) of the mixed model.
 ## REML
 ```console
 slemm --reml --phenotype_file ../data/10k.slemm.csv --bfile ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
