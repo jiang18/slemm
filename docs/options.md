@@ -17,12 +17,12 @@
 - CSV file with a header line
 - Required
 - The first column must be individual IDs, and each subsequent column lists phenotypic values for a trait.
-- If phenotypes are deregressed EBVs, an additional column of $(1-r^2)/r^2$ may be available for each trait to represent individual error variance weights, where $r^2$ is the reliability of individual EBVs for that trait. Refer to `--error_weight_name`.
+- If phenotypes are deregressed EBVs, an additional column of $(1-r^2)/r^2$ may be available for each trait to represent individual error variance weights, where $r^2$ is the reliability of individual deregressed EBVs for that trait. Refer to `--error_weight_name`.
 ### Genotype file format
 - PLINK bed/bim/fam files
 - Required
 - Missing genotypes need to be fully filled. Refer to [filling_bed.R](../scripts/filling_bed.R) for a quick how-to.  
-- Family IDs are not used.
+- Family IDs are ignored.
 ### SNP info file format
 - CSV file with a header line
 - Required
