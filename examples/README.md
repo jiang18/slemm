@@ -43,10 +43,10 @@ slemm --lmm --phenotype_file ../data/10k.slemm.csv --bfile ../data/10k --trait Q
 OMP_NUM_THREADS=1 slemm_gamma --pfile ../data/10k --slemm 10k --out 10k.gamma.txt
 OMP_NUM_THREADS=10 slemm_gwa --pfile ../data/10k --slemm 10k --out 10k.chr1.txt --chr 1
 ```
-- `slemm --lmm` fits linear mixed model for genome-wide associations.
-- `slemm_gamma` and `slemm_gwa` use the `--slemm` option to read the output from `slemm --lmm`. 
+- `slemm --lmm` fits the null linear mixed model for genome-wide associations.
+- `slemm_gamma` and `slemm_gwa` use the `--slemm` option to take the output from `slemm --lmm`. 
 - `slemm_gamma` computes GRAMMAR-Gamma association statistics for individual SNPs.
-- `slemm_gwa` computes single-SNP association statistics that closely approximate those obtained from EMMAX or GCTA-MLMA. 
+- `slemm_gwa` computes single-SNP association statistics that closely approximate those from EMMAX or GCTA-MLMA. 
 
 > [!NOTE]
 > Association tests with `slemm_gwa` should be done for each chromosome separately. 
