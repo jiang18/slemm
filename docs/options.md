@@ -27,7 +27,7 @@
 - CSV file with a header line
 - Required
 - The first column must list SNP IDs, and each subsequent column (if any) lists user-specified prior weights for SNP effect variance.
-- The SNP info file lists SNPs modeled in the random-effects term (or genomic relationship matrix) of the mixed model.
+- The SNP info file specifies SNPs modeled in the random-effects term (or genomic relationship matrix) of the mixed model.
 - Only SNPs present in both the SNP info file and the genotype files are included in the analysis.
 ### Covariate file format
 - CSV file with a header line
