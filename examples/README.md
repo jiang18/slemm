@@ -14,9 +14,11 @@ mkdir slemm
 cd slemm
 perl -e 'print "SNP\n"; while(<>) {@c=split /\s+/; print "$c[1]\n"}' < ../data/10k.bim > snp_info.csv
 ```
-- The SNP info file is a CSV file with a header line. A single column listing SNP IDs is fine.
-- The SNP info file specifies which SNPs to be included in the random-effects term (or genomic relationship matrix) of the mixed model.
-- Do not list all sequence variants in the SNP info file for sequence GWAS; instead, list typical-density (e.g., 50k) chip SNPs or LD-pruned variants. 
+- The SNP info file is a CSV file with a header line. The file can contain just a single column of SNP IDs.
+- The SNP info file specifies which SNPs are included in the random-effects term (or genomic relationship matrix) of the mixed model.
+> [!WARNING]
+> - **Avoid** listing all sequence variants in the SNP info file when sequence data is available.    
+> - **Instead**, list medium-density (e.g., 50k) chip SNPs or LD-pruned variants.
 ## REML
 ```console
 slemm --reml --phenotype_file ../data/10k.slemm.csv --bfile ../data/10k --trait QT --snp_info_file snp_info.csv --out 10k --num_threads 10
