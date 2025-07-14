@@ -49,7 +49,8 @@ OMP_NUM_THREADS=10 slemm_gwa --pfile ../data/10k --slemm 10k --out 10k.chr1.txt 
 - `slemm_gwa` computes single-SNP association statistics that closely approximate those from EMMAX or GCTA-MLMA. 
 
 > [!NOTE]
-> Association tests with `slemm_gwa` should be done for each chromosome separately. 
+> Association tests with `slemm_gwa` should be done for each chromosome separately.
+> The example below shows how to run tests for chromosomes 1-20 and combine results:
 ```bash
 export OMP_NUM_THREADS=10
 for i in `seq 1 20`; do slemm_gwa --pfile ../data/10k --slemm 10k --out 10k.chr$i.txt --chr $i; done
