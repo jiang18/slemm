@@ -51,7 +51,7 @@
 | `--trait` | STRING | Required | Must be a column header in the phenotype file and specify which trait to analyze |
 | `--error_weight_name` | STRING | Optional | Must be a column header in the phenotype file and specify which column contains individual error variance weights |
 | `--bfile` | FILE PREFIX | Required | PLINK bed/bim/fam filename prefix |
-| `--snp_info_file` | FILE | Required | SNP info file |
+| `--snp_info_file` | FILE | Required | SNP info file listing SNPs modeled in the random-effects term of the mixed model |
 | `--snp_weight_name` |  STRING | Optional | Must be a column header in the SNP info file and specify which column contains the weights for individual SNPs' contributions to heritability |
 | `--beta_weight_parameters` | STRING | Optional | Specify $\alpha$ and $\beta$ as in $f(x;\alpha,\beta)=\text{const}\cdot x^{(\alpha-1)}(1-x)^{(\beta-1)}$ ([beta distribution](https://en.wikipedia.org/wiki/Beta_distribution)) to use $f(\text{MAF};\alpha,\beta)$ as the weights for individual SNPs' contributions to heritability [default is `1,1`] |
 | `--covariate_file` | FILE | Optional | Covariate file |
