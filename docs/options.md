@@ -118,7 +118,7 @@ slemm_gwa --help
 - `slemm_gamma` computes GRAMMAR-Gamma association statistics for individual SNPs.
 - `slemm_gwa` computes single-SNP association statistics that closely approximate those from EMMAX or GCTA-MLMA.
 > [!NOTE]
-> See [installation guide](./install.md#use-of-slemm_gammapy-and-slemm_gwapy) for Python script alternatives.
+> See [installation guide](./install.md#use-of-slemm_gammapy-and-slemm_gwapy) for using Python scripts instead of standalone executables.
 
 > [!WARNING]
 > The genotype files (either bed/bim/fam or pgen/pvar/psam) taken by `slemm_gwa`'s `--pfile` option must contain all the null-model SNPs on the specified chromosome;
