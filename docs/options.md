@@ -114,10 +114,12 @@ This function is similar to `--score` of PLINK.
 slemm_gamma --help 
 slemm_gwa --help
 ```
-*See [installation guide](./install.md#use-of-slemm_gammapy-and-slemm_gwapy) for Python script alternatives.*
 - `slemm_gamma` and `slemm_gwa` use the `--slemm` option to take the output from `slemm --lmm`. 
 - `slemm_gamma` computes GRAMMAR-Gamma association statistics for individual SNPs.
-- `slemm_gwa` computes single-SNP association statistics that closely approximate those from EMMAX or GCTA-MLMA. 
+- `slemm_gwa` computes single-SNP association statistics that closely approximate those from EMMAX or GCTA-MLMA.
+> [!NOTE]
+> See [installation guide](./install.md#use-of-slemm_gammapy-and-slemm_gwapy) for Python script alternatives.
+
 > [!WARNING]
 > The genotype files (either bed/bim/fam or pgen/pvar/psam) taken by `slemm_gwa`'s `--pfile` option must contain all the null-model SNPs on the specified chromosome;
 > otherwise, an error will occur. Null-model SNPs are shown in `slemm --lmm`'s `.reml.snp.csv` output file.
