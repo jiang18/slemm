@@ -39,7 +39,7 @@
 | Function | Flag |
 |----------|----------|
 | REML and prediction of SNP effects | `--reml` |
-| mixed-model associations | `--lmm` |
+| mixed-model GWAS step 1 | `--lmm` |
 | prediction of genomic breeding values | `--pred` |
 
 > [!NOTE]
@@ -93,7 +93,7 @@ When `--iter_weighting` is set, SLEMM has two more options to quickly identify i
 ### Options specific to `--lmm`
 | Option | Argument | Type | Description |
 |-------|-------|-------|--------------|
-| `--lmm` | FLAG | Required | To run step 1 for mixed-model associations |
+| `--lmm` | FLAG | Required | To run mixed-model GWAS step 1 |
 | `--num_qf_markers` | INT | Optional | Specify the number of SNPs for computing quadratic-form statistics [default=30] |
 
 ### Options for prediction of genomic breeding values
@@ -102,20 +102,25 @@ This function is similar to `--score` of PLINK.
 |-------|-------|-------|--------------|
 | `--prediction` | FLAG | Required | To predict genomic breeding values |
 | `--bfile` | FILE PREFIX | Required | PLINK bed/bim/fam filename prefix |
-| `--snp_estimate_file` | FILE | Required | SNP effect estimate file (e.g., the **\*.reml.snp.csv** file produced by `--reml` or `--lmm`) |
+| `--snp_estimate_file` | FILE | Required | SNP effect estimate file (i.e., the **.reml.snp.csv** file produced by `--reml` or `--lmm`) |
 | `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value (GEBV)  |
 
 > [!NOTE]
 > The estimated SNP effects correspond to A2 alleles in **\*.reml.snp.csv**. GEBV is equal to the sum of SNP effect times A2 allele count across all SNPs. The `slemm --pred` routine can recognize if A1 is swapped with A2 for any SNPs in the prediction population's bim file relative to the training's.
 
 ### Options of `slemm_gamma` and `slemm_gwa`
+`slemm_gamma` and `slemm_gwa` perform GWAS step 2 after `slemm --lmm` completes step 1. Check options:
 ```
-python3 slemm_gamma.py --help 
-python3 slemm_gwa.py --help
+slemm_gamma --help 
+slemm_gwa --help
 ```
-- `slemm_gamma.py` and `slemm_gwa.py` use the option `--slemm` to take the output of `slemm --lmm`. 
-- `slemm_gamma.py` computes GRAMMAR-Gamma association statistics for each SNP.
-- `slemm_gwa.py` computes single-SNP association statistics that closely approximate those obtained from EMMAX or GCTA-MLMA. 
+*See [installation guide](./install.md#use-of-slemm_gammapy-and-slemm_gwapy) for Python script alternatives*
+- `slemm_gamma.py` and `slemm_gwa.py` use the `--slemm` option to take the output from `slemm --lmm`. 
+- `slemm_gamma.py` computes GRAMMAR-Gamma association statistics for individual SNPs.
+- `slemm_gwa.py` computes single-SNP association statistics that closely approximate those from EMMAX or GCTA-MLMA. 
+> [!WARNING]
+> The genotype files (either bed/bim/fam or pgen/pvar/psam) taken by `slemm_gwa`'s `--pfile` option must contain all the null-model SNPs on the specified chromosome;
+> otherwise, an error will occur. Null-model SNPs are shown in `slemm --lmm`'s `.reml.snp.csv` output file.
 
 ## Setting options for genomic predictions
 - `--reml` is required.
