@@ -34,6 +34,7 @@
 - Optional
 - The first column must list individual IDs.
 - All covariate values must be numeric.
+- Categorical variables: Use dummy variable encoding (one column per level with 0/1 values).
 - If `--covariate_names all` is specified, SLEMM will use all columns (except the first) as covariates.
 - *Intercept handling:*
    - If `--covariate_names` is not specified, SLEMM automatically includes an intercept term.
