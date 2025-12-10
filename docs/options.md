@@ -33,6 +33,9 @@
 - CSV file with a header line
 - Optional
 - The first column must list individual IDs.
+- Intercept handling:
+   - If `--covariate_names` is not specified, SLEMM automatically includes an intercept term.
+   - If `--covariate_names` is specified, SLEMM does not automatically add an intercept. In this case, users must include a column of 1's in the covariate file and specify it in `--covariate_names` if an intercept is desired.
 
 ## Options
 `slemm` has the following three major functions:
