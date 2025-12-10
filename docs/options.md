@@ -61,7 +61,7 @@
 | `--snp_weight_name` |  STRING | Optional | Must be a column header in the SNP info file and specify which column contains the weights for individual SNPs' contributions to heritability |
 | `--beta_weight_parameters` | STRING | Optional | Specify $\alpha$ and $\beta$ as in $f(x;\alpha,\beta)=\text{const}\cdot x^{(\alpha-1)}(1-x)^{(\beta-1)}$ ([beta distribution](https://en.wikipedia.org/wiki/Beta_distribution)) to use $f(\text{MAF};\alpha,\beta)$ as the weights for individual SNPs' contributions to heritability [default is `1,1`] |
 | `--covariate_file` | FILE | Optional | Covariate file |
-| `--covariate_names` | STRING | Optional | Comma-separated list of covariates to include in the analysis (e.g., `--covariate_names intercept,age,sex`) |
+| `--covariate_names` | STRING | Optional | Comma-separated list of covariates to include in the analysis (e.g., `--covariate_names cov1,cov2,cov3`) |
 | `--output_file` | FILE PREFIX | Required | Output filename prefix |
 | `--max_heritability` | FLOAT | Optional | Specify a sufficiently large value $h^2_{max}$ so that the search for heritability falls in (1e-4, $h^2_{max}$) [default=0.7] |
 | `--num_threads` | INT | Optional | Number of computational threads to use [default=1] |
