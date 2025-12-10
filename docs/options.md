@@ -105,11 +105,11 @@ This function is similar to `--score` of PLINK.
 |-------|-------|-------|--------------|
 | `--prediction` | FLAG | Required | To predict genomic breeding values |
 | `--bfile` | FILE PREFIX | Required | PLINK bed/bim/fam filename prefix |
-| `--snp_estimate_file` | FILE | Required | SNP effect estimate file (i.e., the **.reml.snp.csv** file produced by `--reml` or `--lmm`) |
+| `--snp_estimate_file` | FILE | Required | SNP effect estimate file (i.e., the `.reml.snp.csv` file produced by `--reml` or `--lmm`) |
 | `--output` | FILE | Required | Output file where column 1 is individual ID and column 2 is genomic estimated breeding value (GEBV)  |
 
 > [!NOTE]
-> The estimated SNP effects correspond to A2 alleles in **\*.reml.snp.csv**. GEBV is equal to the sum of SNP effect times A2 allele count across all SNPs. The `slemm --pred` routine can recognize if A1 is swapped with A2 for any SNPs in the prediction population's bim file relative to the training's.
+> The estimated SNP effects correspond to A2 alleles in `*.reml.snp.csv`. GEBV is equal to the sum of SNP effect times A2 allele count across all SNPs. The `slemm --pred` routine can recognize if A1 is swapped with A2 for any SNPs in the prediction population's bim file relative to the training's.
 
 ### Options of `slemm_gamma` and `slemm_gwa`
 `slemm_gamma` and `slemm_gwa` perform GWAS step 2 after `slemm --lmm` completes step 1. Check options:
@@ -129,14 +129,14 @@ slemm_gwa --help
 
 ## Setting options for genomic predictions
 - `--reml` is required.
-- `--num_threads` should be proporly set on a multi-core computer to speed up computations.
+- `--num_threads` should be properly set on a multi-core computer to speed up computations.
 - `--max_heritability` should be set **slightly larger** than the actual (pseudo-)heritability; e.g., `--max_herit 0.4` can be used for dairy milk yield traits because we know they are moderately heritable. A large value works but results in unnecessary computation. Its default value (0.7) is **unnecessarily** large for most traits.
 - `--iter_weighting` is particularly needed for traits underlain by large-effect QTLs.
 - `--window_size` is only useful when `--iter_weighting` is set. Its default value generally works well.
 
 ## Setting options for GWAS
 - `--lmm` is required.
-- `--num_threads` should be proporly set on a multi-core computer to speed up computations.
+- `--num_threads` should be properly set on a multi-core computer to speed up computations.
 - `--max_heritability` should be set **slightly larger** than the actual (pseudo-)heritability; e.g., `--max_herit 0.4` can be used for dairy milk yield traits because we know they are moderately heritable. A large value works but results in unnecessary computation. Its default value (0.7) is **unnecessarily** large for most traits.
 - `--window_size` affects the computation of mixed-model associations in `slemm_gwa`. The larger `--window_size`, the more accurate approximation of mixed-model associations but the more intensive computations. Its default value generally works well for livestock data.
 > [!NOTE]
